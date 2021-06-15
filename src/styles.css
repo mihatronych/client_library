@@ -1,0 +1,76 @@
+body {
+
+}
+a{
+}
+a:hover{
+
+}
+.auth_card{
+
+}
+
+.form-control:not(active){
+
+}
+.form-control::placeholder{
+
+}
+
+.form-control:focus{
+
+}
+
+.menu{
+
+}
+th, td{
+
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.ico{
+    margin: 8px;
+    background: url('img/i.jfif');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.paginationBttns {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    margin: 2%;
+}
+
+.paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid  white;
+    color:  white;
+    cursor: pointer;
+}
+
+.paginationBttns a:hover {
+    color: white;
+    background-color:  #6c5b7b;
+}
+
+.paginationActive a {
+    color: white;
+    background-color:  #6c5b7b;
+}
+
+.paginationDisabled a {
+    color: white;
+    background-color: #6c5b7b;;
+}
