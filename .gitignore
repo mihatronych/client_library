@@ -11,7 +11,10 @@ dist# See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # production
 /build
-
+.idea/*
+*/.idea/*
+*.xml
+*.iml
 # misc
 .DS_Store
 .env.local
