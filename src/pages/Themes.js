@@ -34,7 +34,7 @@ const Themes = observer(() => {
             <p className="m-auto">подтемы:
                 {theme.topics.filter((data) => {if (data.themeId === themez.id) return  data})
                     .map(topic =>
-                        <i className="m-1">{topic.subject}</i>
+                        <i className="m-1">{topic.subject};</i>
                     )}
             </p>
             <p className="m-auto">Публикаций: {countBooksOfTheme(themez.id)}</p>
