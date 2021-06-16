@@ -97,7 +97,7 @@ const Marks = observer(() => {
 
             ar.push({
                 name: i.toString(),
-                count: count/absCount*100,
+                count: count,
             })
             i++;
         }
