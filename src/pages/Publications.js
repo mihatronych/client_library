@@ -27,6 +27,7 @@ const Publications = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{height:window.innerHeight - 54}}
         >
+            {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
             {superFilter.filtered === undefined ?
             <SortablePublications publications={publication.publications} authors={publication.authors} types={publication.types} marks = {mark}/>
                 : <SortablePublications publications={superFilter.filtered} authors={publication.authors} types={publication.types} marks = {mark}/>}

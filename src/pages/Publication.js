@@ -19,12 +19,13 @@ import {observer} from "mobx-react-lite";
 import {LOGIN_ROUTE, MAIN_ROUTE, MARKS_ROUTE, PUBLICATION_ROUTE} from "../utils/consts";
 
 const Publication = observer(() => {
+    const {publication, mark, theme, language, publictn} = useContext(Context)
     const [publicn, setPublicn] = useState({info: []})
-    const {publication, mark, theme, language} = useContext(Context)
     const {id} = useParams()
     const history = useHistory()
     useEffect(() => {
         fetchOnePublication(id).then(data => setPublicn(data))
+        fetchOnePublication(id).then(data => publictn.setPublication(data))
         fetchPublication().then(data => theme.setPublications(data))
         fetchTheme().then(data => theme.setThemes(data))
         fetchTopic().then(data => theme.setTopics(data))
@@ -38,7 +39,7 @@ const Publication = observer(() => {
         fetchPublicator().then(data => publication.setPublicators(data))
         }, [])
     console.log(publicn)
-
+    ////////// Сетить штуки через setState!!!!!!!!!
     const meanMark = (publicationId) =>{
         let count = 0
         let sum = 0
@@ -62,79 +63,102 @@ const Publication = observer(() => {
         history.push(MAIN_ROUTE)
     }
 
-    return (
-        <Container
-            className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - 54, zIndex:"-1"}}
-        >
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
-                <h3 className="align-self-center"> Публикация {publicn.title}</h3>
-                <div className="d-flex justify-content-between container">
+    const DisplayData = () => {
+        return <div>
+        <h3 className="align-self-center"> Публикация {publictn.publication.title}</h3>
+        <div className="d-flex justify-content-between container">
 
-                </div>
-                <Row>
-                <Col>
+        </div>
+        <Row>
+            <Col>
                 <div className="d-flex justify-content-between container">
                     <p className="small-text"> Автор {publication.authors.map(items => {
-                        if (items.id === parseInt(publicn.authorId))
+                        if (items.id === parseInt(publictn.publication.authorId))
                             return <i className="m-auto"> {items.name}</i>
                     })}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
-                    <p className="small-text"> Рейтинг {meanMark(publicn.id)}</p>
+                    <p className="small-text"> Рейтинг {meanMark(publictn.publication.id)}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
                     <p className="small-text"> Тип {publication.types.map(items => {
-                        if (items.id === parseInt(publicn.typeId))
+                        if (items.id === parseInt(publictn.publication.typeId))
                             return <i>{items.name} </i>
                     })
                     }</p>
                 </div>
                 <div className="d-flex justify-content-between container">
-                    <p className="small-text"> Длина {publicn.pages}</p>
+                    <p className="small-text"> Длина {publictn.publication.pages}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
                     <p className="small-text"> Издательство {publication.publicators.map(items => {
-                            if (items.id === parseInt(publicn.publicatorId))
-                                return <i>{items.name} </i>
-                        })}</p>
-                </div>
-                <div className="d-flex justify-content-between container">
-                    <p className="small-text"> Язык публикации - {language.dialects.map(dialect => {
-                                if (dialect.id === parseInt(publicn.dialectId))
-                                    return <i>
-                                        {dialect.name} : {language.languages.map(language => {
-                                            if (language.id === dialect.languageId) return <i>{language.name}</i>
-                                        }
-                                    )}
-                                    </i>
-                            }
-                        )}
-                    </p>
-                </div>
-                <div className="d-flex justify-content-between container">
-                    <p className="small-text"> Регион {publication.regions.map(items => {
-                        if (items.id === parseInt(publicn.regionId))
+                        if (items.id === parseInt(publictn.publication.publicatorId))
                             return <i>{items.name} </i>
                     })}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
-                    <p className="small-text"> Аннотация {publicn.short_review}</p>
+                    <p className="small-text"> Язык публикации - {language.dialects.map(dialect => {
+                            if (dialect.id === parseInt(publictn.publication.dialectId))
+                                return <i>
+                                    {dialect.name} : {language.languages.map(language => {
+                                        if (language.id === dialect.languageId) return <i>{language.name}</i>
+                                    }
+                                )}
+                                </i>
+                        }
+                    )}
+                    </p>
                 </div>
-                </Col>
-                <Col className="text-sm-right">
-                    <div className="">
-                        <p className="small-text"> Другие публикации автора:</p>
-                        {publication.publications.filter((data)=> {if (data.authorId === publicn.authorId
-                        && data.id !== publicn.id) return data}).map(data =>
-                            <p>{data.title}</p>
-                        )}
-                    </div>
-                </Col>
-                </Row>
-                <a href={process.env.REACT_APP_API_URL + publicn.file} target="_blank"
-                   className="d-flex justify-content-center" download>Открыть для чтения</a>
-                <a href={MARKS_ROUTE + '/'+ publicn.id} className="d-flex justify-content-center">Отзывы</a>
+                <div className="d-flex justify-content-between container">
+                    <p className="small-text"> Тема публикации - {theme.themes.map(themez => {
+                            if (themez.id === parseInt(publictn.publication.themeId))
+                                return <i>
+                                    {themez.name} : {theme.topics.map(topic => {
+                                        if (themez.id === topic.themeId) return <i>{topic.subject}; </i>
+                                    }
+                                )}
+                                </i>
+                        }
+                    )}
+                    </p>
+                </div>
+                <div className="d-flex justify-content-between container">
+                    <p className="small-text"> Регион {publication.regions.map(items => {
+                        if (items.id === parseInt(publictn.publication.regionId))
+                            return <i>{items.name} </i>
+                    })}</p>
+                </div>
+                <div className="d-flex justify-content-between container">
+                    <p className="small-text"> Аннотация {publictn.publication.short_review}</p>
+                </div>
+            </Col>
+            <Col className="text-sm-right">
+                <div className="">
+                    <p className="small-text"> Другие публикации автора:</p>
+                    {publication.publications.filter((data)=> {if (data.authorId === publictn.publication.authorId
+                        && data.id !== publictn.publication.id) return data}).map(data =>
+                        <p>{data.title}</p>
+                    )}
+                </div>
+            </Col>
+        </Row>
+        <a href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank"
+           className="d-flex justify-content-center" download>Открыть для чтения</a>
+        <a href={MARKS_ROUTE + '/'+ publictn.publication.id} className="d-flex justify-content-center">Отзывы</a>
+            </div>
+    }
+
+    return (
+        <Container
+            className="d-flex justify-content-center align-items-center"
+            style={{height:window.innerHeight - 54, zIndex:"-1"}}
+        >
+            {useEffect(() => {
+                fetchPublication().then(data => publication.setPublications(data))
+                fetchOnePublication(id).then(data => publictn.setPublication(data))
+                fetchOnePublication(id).then(data => setPublicn(data))}, [])}
+            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+                {DisplayData()}
                 <div className="d-inline-flex justify-content-center  mt-3 ">
                 <Button
                 variant={"dark"}

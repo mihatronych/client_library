@@ -20,7 +20,7 @@ import {useHistory, useParams} from "react-router-dom";
 
 
 const UpdatePublication = observer(() => {
-    const {publication} = useContext(Context)
+    const {publication, publictn} = useContext(Context)
     const [publicn, setPublicn] = useState({info: []})
     const {id} = useParams()
     const history = useHistory()
@@ -32,6 +32,16 @@ const UpdatePublication = observer(() => {
         fetchRegion().then(data => publication.setRegions(data))
         fetchDialect().then(data => publication.setDialects(data))
         fetchTheme().then(data => publication.setThemes(data))
+        fetchOnePublication(id).then(data => setTitle(data.title))
+        fetchOnePublication(id).then(data => setShort_review(data.short_review))
+        fetchOnePublication(id).then(data => setPages(data.pages))
+
+        fetchOnePublication(id).then(data => setAuthorId(data.authorId))
+        fetchOnePublication(id).then(data => setThemeId(data.themeId))
+        fetchOnePublication(id).then(data => setDialectId(data.dialectId))
+        fetchOnePublication(id).then(data => setRegionId(data.regionId))
+        fetchOnePublication(id).then(data => setPublicatorId(data.publicatorId))
+        fetchOnePublication(id).then(data => setTypeId(data.typeId))
     }, [publication])
     const [title, setTitle] = useState(publicn.title)
     const [short_review, setShort_review] = useState(publicn.short_review)
@@ -51,9 +61,10 @@ const UpdatePublication = observer(() => {
                 authorId: author_id, themeId: themeId, typeId: typeId, regionId:regionId, date_publ: date_publ,
                 date_create:date_create, dialectId:dialectId, publicatorId: publicatorId, file: file
             }).then()
-            fetchPublication(data => publication.setPublications(data)).then()
+            fetchPublication().then(data => publication.setPublications(data))
+            fetchOnePublication(id).then(data => publictn.setPublication(data))
             alert("Данные обновлены");
-            history.push(PUBLICATION_ROUTE+"/"+publicn.id)
+            history.push(PUBLICATION_ROUTE)
         } catch (e) {
             return alert(e.response.data.message)
         }
@@ -70,7 +81,7 @@ const UpdatePublication = observer(() => {
                     <Form.Control
                         className="mt-3"
                         placeholder="Введите название книги..."
-                        value={publicn.title}
+                        value={title}
                         onChange={e => setTitle(e.target.value)}
                     />
                     <Row>
@@ -118,14 +129,14 @@ const UpdatePublication = observer(() => {
                     <Form.Group>
                         <Form.Label>Введите краткое описание</Form.Label>
                         <Form.Control as="textarea"
-                                      value={publicn.short_review}
+                                      value={short_review}
                                       onChange={e => setShort_review(e.target.value)}>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Введите длину публикации</Form.Label>
                         <input type="number" className="form-control" min='1'
-                               value={publicn.pages}
+                               value={pages}
                                onChange={e => setPages(e.target.value)}/>
                     </Form.Group>
                     <Row>

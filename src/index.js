@@ -7,6 +7,7 @@ import LanguageStore from "./store/LanguageStore";
 import ThemeStore from "./store/ThemeStore";
 import MarkStore from "./store/MarkStore";
 import SuperFilterStore from "./store/SuperFilterStore";
+import PublictnStore from "./store/PublictnStore";
 
 export const Context = createContext(null)
 
@@ -17,7 +18,8 @@ ReactDOM.render(
         language: new LanguageStore(),
         theme: new ThemeStore(),
         mark: new MarkStore(),
-        superFilter: new SuperFilterStore()
+        superFilter: new SuperFilterStore(),
+        publictn: new PublictnStore()
     }}>
         <App />,
     </Context.Provider>,

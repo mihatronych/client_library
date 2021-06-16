@@ -108,6 +108,7 @@ const Marks = observer(() => {
             className="d-flex align-items-center"
             style={{height:window.innerHeight - 54}}
         >
+            {useEffect(() => {fetchMark().then(data => mark.setMarks(data))}, [mark])}
             <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="align-self-center"> Отзывы о книге {publicn.title}</h2>
 
