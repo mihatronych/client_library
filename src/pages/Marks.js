@@ -23,7 +23,7 @@ const Marks = observer(() => {
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const marksPerPage = 2
+    const marksPerPage = 4
     const pagesVisited = pageNumber * marksPerPage
     const sortedMarks = mark.marks.slice()
         .filter((a)=> a.publicationId === publicn.id)
