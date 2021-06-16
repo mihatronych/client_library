@@ -14,7 +14,7 @@ const AddMark = observer(() => {
     const {id} = useParams()
     const history = useHistory()
 
-    const [rate, setRate] = useState(0)
+    const [rate, setRate] = useState(1)
     const [content, setContent] = useState("")
     const [authorId, setAuthorId] = useState(user.id)
     const [publicationId, setPublicationId] = useState(id)
