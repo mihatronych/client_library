@@ -158,16 +158,6 @@ const SortablePublications = (props) => {
                         <Col className="m-auto">{meanMark(item.id)}</Col>
                         <Col className="m-auto"><Button href={"/publication/"+item.id}
                                                         variant={"outline-light"}>Открыть</Button></Col>
-                        {user.isAuth ?
-                            <Col className="m-auto">
-                                <Button onClick={()=>Delete(item.id)}
-                                        variant={"outline-light"}
-                                >Удалить</Button>
-                        </Col>
-                            :
-                            <Col  className="m-auto">
-                            </Col>
-                        }
                     </Row>
                 </div>
 

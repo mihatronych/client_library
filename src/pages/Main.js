@@ -13,7 +13,6 @@ import {fetchTheme} from "../http/theme_topic_api";
 
 const Main = observer(() => {
     const {publication, mark} = useContext(Context)
-    /// ОЦЕНКУ ДОДЕЛАТЬ ТАМ ДОЛЖНА БЫТЬ СРЕДНЯЯ, А НЕ ПЕРВАЯ
     useEffect(() => {
         fetchAuthor().then(data => publication.setAuthors(data)).then(data => mark.setAuthors(data))
         fetchPublication().then(data => publication.setPublications(data)).then(data => mark.setPublications(data))
@@ -91,6 +90,7 @@ const Main = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{height:window.innerHeight - 54}}
         >
+            {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
             <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="align-self-center"> Новейшие публикации</h2>
                 <div >
