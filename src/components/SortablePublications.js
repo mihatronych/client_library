@@ -128,7 +128,7 @@ const SortablePublications = (props) => {
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const publicationsPerPage = 2
+    const publicationsPerPage = 4
     const pagesVisited = pageNumber * publicationsPerPage
     const displayPublications = items
         .slice(pagesVisited, pagesVisited + publicationsPerPage)
