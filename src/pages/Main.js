@@ -42,7 +42,7 @@ const Main = observer(() => {
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const publicationsPerPage = 2
+    const publicationsPerPage = 4
     const pagesVisited = pageNumber * publicationsPerPage
     const sortedPublictions = publication.publications.slice()
         .sort((a, b) => Date.parse(a.date_publ) - Date.parse(b.date_publ)).reverse()
