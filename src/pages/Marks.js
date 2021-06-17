@@ -24,7 +24,7 @@ const Marks = observer(() => {
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const marksPerPage = 4
+    const marksPerPage = 3
     const pagesVisited = pageNumber * marksPerPage
     const sortedMarks = mark.marks.slice()
         .filter((a)=> a.publicationId === publicn.id)
@@ -104,6 +104,14 @@ const Marks = observer(() => {
         }
     }
 
+    const style = {
+        top: '98%',
+        left: '50%',
+        right: 0,
+        transform: 'translate(0, -50%)',
+        lineHeight: '24px',
+    };
+
     return (
         <Container
             className="d-flex align-items-center"
@@ -145,6 +153,7 @@ const Marks = observer(() => {
                     <div className="mt-3 p-2"  style={
                         { backgroundColor:'#3366CC', color:"white"}
                     }>
+                        <h3>Гистограмма оценок публикации(кол-во/рейтинг)</h3>
                         <div>{meanMark(id)}</div>
                         {graphData()}
                             <BarChart
@@ -162,8 +171,8 @@ const Marks = observer(() => {
                                 <XAxis dataKey="name" stroke="white" />
                                 <YAxis stroke="white"/>
                                 <Tooltip/>
-                                <Legend />
-                                <Bar dataKey="count" fill="#C06C84" />
+                                <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
+                                <Bar dataKey="count"fill="#FF872B" />
                             </BarChart>
                     </div>
                     </Col>
