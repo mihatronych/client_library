@@ -58,14 +58,14 @@ const NavBar = observer(() => {
                 <ArchiveMenu className='col-sm-1'/>
                 <LanguageMenu className='col-sm-2'/>
                 <AdditionalMenu/>
-                <div className="dropdown">
+                <div className="ml-1 dropdown">
                     <div className="dropbtn">
                     <Search
                         searchQuery={searchQuery}
                         setSearchQuery={setSearchQuery}
                     />
                     </div>
-                            <div className="dropdown-content"  style={{height:"150px", overflowY:' scroll'}}>
+                            <div className="dropdown-content"  style={{maxHeight:"150px", overflowY:' scroll'}}>
                                 {filteredPosts.map(post => (
                                     <a key={post.key} href={"/publication/"+post.id}>{post.title}</a>
                                 ))}

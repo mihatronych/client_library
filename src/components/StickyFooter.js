@@ -1,6 +1,6 @@
-//import styles from '../styles.css';
 import React from "react";
-
+import "../styles.css"
+import telegram from '../img/telegram.png'
 const style = {
     backgroundColor: "#C06C84",
     borderTop: "1px solid rgba(174, 174, 192, 0.4)",
@@ -29,7 +29,7 @@ function Footer() {
             <div style={style} >
 
                 <div className="d-flex justify-content-center container">
-                    <p className="small-text"> &copy; {new Date().getFullYear()} | Mihatron | dolgushin.mikhail131200@yandex.ru | <a target="_blank" href={"https://github.com/mihatronych"}>Git</a></p>
+                    <p className="small-text"> &copy; {new Date().getFullYear()} | Mihatron | <a style={{color:"white"}} href={"mailto:dolgushin.mikhail131200@yandex.ru"}>dolgushin.mikhail131200@yandex.ru </a>| <a  style={{color:"white"}} target="_blank" href={"https://github.com/mihatronych"}>Git</a> | <a href={"https://t.me/MihailmacBlack"} style={{color:"white"}} target="_blank" >Telegram</a> | <a href={"https://vk.com/mdliberateanimals"} style={{color:"white"}} target="_blank">Вк</a></p>
 
                 </div>
 
