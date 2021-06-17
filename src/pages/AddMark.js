@@ -22,6 +22,10 @@ const AddMark = observer(() => {
     const storedToken = localStorage.getItem("token");
     let decodedData = jwt_decode(storedToken);
     const Create = () => {
+        if(rate === undefined || "")
+            return alert("Невведено название")
+        if(content === undefined || "")
+            return alert("Невведено краткое описание")
         try {
             createMark({rate:rate, content:content, authorId:decodedData.id, publicationId:publicationId}).then()
             alert("Данные добавлены");
