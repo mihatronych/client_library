@@ -71,7 +71,7 @@ const Marks = observer(() => {
         if (count === 0){
             count = 1
         }
-        return <div>Ср. рейтинг: {sum/(count)}/10</div>
+        return <div>Ср. рейтинг: {(sum/(count)).toFixed(2)}/10</div>
     }
 
     const changePage = ({ selected }) => {
@@ -141,13 +141,7 @@ const Marks = observer(() => {
                     </Row>
 
                     <Col/>
-                    <Col>{user.isAuth ? <Col>
-                            <Button href={"/add_mark/"+publicn.id} variant={"outline-light"}>Добавить отзыв</Button>
-                        </Col>
-                        :
-                        <Col>
-                        </Col>
-                    }</Col>
+
                     </Col>
                     <Col>
                     <div className="mt-3 p-2"  style={
@@ -174,6 +168,13 @@ const Marks = observer(() => {
                                 <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
                                 <Bar dataKey="count"fill="#FF872B" />
                             </BarChart>
+                        <Col>{user.isAuth ? <Col>
+                                <Button href={"/add_mark/"+publicn.id} variant={"outline-light"}>Добавить отзыв</Button>
+                            </Col>
+                            :
+                            <Col>
+                            </Col>
+                        }</Col>
                     </div>
                     </Col>
                 </Row>

@@ -53,7 +53,7 @@ const Publication = observer(() => {
         if (count === 0){
             count = 1
         }
-        return <i>{sum/(count)}</i>
+        return <i>{(sum/(count)).toFixed(2)}</i>
     }
 
     const Delete = (id) => {

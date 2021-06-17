@@ -42,7 +42,7 @@ const useSortableData = (items, sConfig, fConfig = null) => {
         if (count === 0){
             count = 1
         }
-        return sum/(count)
+        return Math.round(sum/(count)*100)/100
     }
 
     const filteredItems = React.useMemo(() => {
@@ -106,7 +106,7 @@ const SortablePublications = (props) => {
         if (count === 0){
             count = 1
         }
-        return <div>рейтинг: {sum/(count)}</div>
+        return <div>рейтинг: {Math.round(sum/(count)*100)/100}</div>
     }
 
     let { items, requestSort,requestFilter, sortConfig,  filterConfig} = useSortableData(props.publications);
