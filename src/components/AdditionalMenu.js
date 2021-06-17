@@ -59,14 +59,29 @@ const AdditionalMenu = () => {
             rowAr.push("'"+publ.pages.toString()+"'")
             rowAr.push("'"+publ.date_publ.toString()+"'")
             rowAr.push("'"+publ.date_create.toString()+"'")
-
-            rowAr.push("'"+publication.authors.find((a) => a.id === publ.authorId).name.toString()+"'")
+            try {
+                rowAr.push("'" + publication.authors.find((a) => a.id === publ.authorId).name.toString() + "'")
+            }
+            catch {}
+            try {
             rowAr.push("'"+publication.themes.find((a) => a.id === publ.themeId).name.toString()+"'")
-            rowAr.push("'"+publication.dialects.find((a) => a.id === publ.dialectId).name.toString()+"'")
+            }
+            catch {}
+            try {
+                rowAr.push("'" + publication.dialects.find((a) => a.id === publ.dialectId).name.toString() + "'")
+            }catch {}
+            try {
             rowAr.push("'"+publication.regions.find((a) => a.id === publ.regionId).name.toString()+"'")
+            }catch {}
+            try {
             rowAr.push("'"+publication.publicators.find((a) => a.id === publ.publicatorId).name.toString()+"'")
+            }catch {}
+            try {
             rowAr.push("'"+publication.types.find((a) => a.id === publ.typeId).name.toString()+"'")
+            }catch {}
+            try {
             rowAr.push("'"+meanMark(publ.id).toString()+"'")
+            }catch {}
 
             csvData.push(rowAr)
             }

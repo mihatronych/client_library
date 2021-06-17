@@ -8,6 +8,7 @@ import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis} from "recharts";
 import Tooltip from "@material-ui/core/Tooltip";
+import '../styles.css';
 
 const Marks = observer(() => {
     const {mark, user} = useContext(Context)

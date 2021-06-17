@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Container} from "react-bootstrap";
-
+import '../styles.css';
 import {Context} from "../index";
 import SortablePublications from "../components/SortablePublications";
 import {observer} from "mobx-react-lite";

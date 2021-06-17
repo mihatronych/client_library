@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../index";
-import {Button, Navbar, Container} from "react-bootstrap";
+import  {Col,Button, Navbar, Container} from "react-bootstrap";
 import {Nav} from "react-bootstrap";
 import {NavLink, useHistory} from "react-router-dom";
 import {LOGIN_ROUTE, MAIN_ROUTE} from "../utils/consts";
@@ -9,6 +9,8 @@ import ArchiveMenu from "./ArchiveMenu";
 import LanguageMenu from "./LanguageMenu";
 import AdditionalMenu from "./AdditionalMenu";
 import "../styles.css"
+import Search from "./Search";
+import {fetchPublication} from "../http/library_api";
 
 const phantom = {
     display: 'block',
@@ -20,23 +22,55 @@ const phantom = {
 
 
 const NavBar = observer(() => {
-    const {user} = useContext(Context)
+    const {user, publication} = useContext(Context)
     const history = useHistory()
+
 
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
         localStorage.removeItem("token");
     }
+
+    const filterPosts = (posts, query) => {
+        if (!query) {
+            return posts;
+        }
+
+        return posts.filter((post) => {
+            const postName = post.title;
+            return postName.includes(query);
+        });
+    };
+
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
+    const filteredPosts = filterPosts(publication.publications, searchQuery);
+
+
     return (
         <div>
         <Navbar variant="dark" className="mb-3" style={{backgroundColor:'#C06C84', position:'fixed', zIndex:'3', height: "60px", width: "100%",}}>
-            <Container>
+            <Container className="d-flex">
                 <div className="ico"/>
             <NavLink style={{color:'white'}} to={MAIN_ROUTE}>Главная</NavLink>
-                <ArchiveMenu />
-                <LanguageMenu/>
+                <ArchiveMenu className='col-sm-1'/>
+                <LanguageMenu className='col-sm-2'/>
                 <AdditionalMenu/>
+                <div className="dropdown">
+                    <div className="dropbtn">
+                    <Search
+                        searchQuery={searchQuery}
+                        setSearchQuery={setSearchQuery}
+                    />
+                    </div>
+                            <div className="dropdown-content">
+                                {filteredPosts.map(post => (
+                                    <a key={post.key} href={"/publication/"+post.id}>{post.title}</a>
+                                ))}
+                            </div>
+                </div>
             {user.isAuth ?
                 <Nav className="ml-auto" style={{color: 'white'}}>
                     <Button variant={"outline-light"} onClick={() => logOut()}>Выйти</Button>
