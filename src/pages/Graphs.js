@@ -8,6 +8,7 @@ import {fetchTheme} from "../http/theme_topic_api";
 import {Card, Col, Container} from "react-bootstrap";
 import {Bar, BarChart, CartesianGrid, Legend, Pie, PieChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
 import Tooltip from "@material-ui/core/Tooltip";
+import {override} from "mobx";
 
 const Graphs = observer(() => {
     const {publication, mark} = useContext(Context)
@@ -24,9 +25,9 @@ const Graphs = observer(() => {
     let ar1 = []
 
     const r_color = () => {
-        let r = Math.floor(Math.random() * (256)),
-            g = Math.floor(Math.random() * (256)),
-            b = Math.floor(Math.random() * (256)),
+        let r = Math.floor(Math.random() * (128) + 128),
+            g = Math.floor(Math.random() * (128)+ 128),
+            b = Math.floor(Math.random() * (128)+ 128),
             color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
         return color
     }
@@ -65,6 +66,27 @@ const Graphs = observer(() => {
 
             ar2.push({
                 name: dialect.name,
+                value: count,
+                fill: r_color()
+            })
+        })
+    }
+
+    let ar3 = []
+
+    const graphDataThemes= () =>{
+        publication.themes.map(theme => {
+
+            let count = 0
+            let absCount = 0
+            publication.publications.map(item => {
+                if(item.themeId === theme.id){
+                    count += 1
+                }
+            })
+
+            ar3.push({
+                name: theme.name,
                 value: count,
                 fill: r_color()
             })
@@ -127,10 +149,12 @@ const Graphs = observer(() => {
     return (
         <Container
             className="d-flex align-items-center"
-            style={{height:window.innerHeight - 54}}
+            style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
             <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="align-self-center"> Статистика по публикациям</h2>
+                <div className="align-self-center" style={{width: window.innerWidth - window.innerWidth*0.6,
+                    height: window.innerHeight - window.innerHeight*0.6,overflowY:"scroll"}}>
                 <div className="mt-3 p-2 align-self-center"  style={
                     { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
                 }>
@@ -173,6 +197,27 @@ const Graphs = observer(() => {
                     </PieChart>
                 </div>
 
+                <div className="mt-2 p-2 align-self-center"  style={
+                    { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
+                }>
+                    <h3 className="align-self-center"> Круговая диаграмма по темам</h3>
+                    {graphDataThemes()}
+                    <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
+                        <Pie
+                            dataKey="value"
+                            isAnimationActive={false}
+                            data={ar3}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={70}
+                            fill="#8884d8"
+                            label
+                        />
+                        <Tooltip/>
+                        <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
+                    </PieChart>
+                </div>
+                </div>
             </Card>
         </Container>
     );
