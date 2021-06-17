@@ -29,7 +29,7 @@ const Regions = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{height:window.innerHeight - 54}}
         >
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - window.innerWidth*0.6, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="align-self-center"> Регионы</h2>
                 <div>
                     {publication.regions.map(region =>

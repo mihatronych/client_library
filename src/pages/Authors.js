@@ -24,7 +24,10 @@ const Authors = observer(() => {
         return history.push(PUBLICATION_ROUTE)
     }
 
-    const displayTable = publication.authors.map(author => {
+    const sortedAuthors = publication.authors.slice()
+        .sort((a, b) => a.name >= b.name ? 1 : -1)
+
+    const displayTable = sortedAuthors.map(author => {
         return <div>
             <div className="d-flex justify-content-between container mt-3" style={
                 {backgroundColor: '#3366CC', color: "white"}
@@ -40,11 +43,11 @@ const Authors = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - 54}}
+            style={{height:window.innerHeight -200}}
         >
             <Card style={{width: window.innerWidth - window.innerWidth*0.2, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                     <h2 className="align-self-center"> Авторы</h2>
-                    <div>
+                    <div style={{height:window.innerHeight - window.innerHeight*0.6, overflowY:"scroll"}}>
                         {displayTable}
                     </div>
 

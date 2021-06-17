@@ -42,7 +42,7 @@ const useSortableData = (items, sConfig, fConfig = null) => {
         if (count === 0){
             count = 1
         }
-        return sum/(count * 10)
+        return sum/(count)
     }
 
     const filteredItems = React.useMemo(() => {
@@ -190,10 +190,6 @@ const SortablePublications = (props) => {
                     <DropdownItem onClick={() => requestSort('date_publ')}
                                   className={getClassNamesFor('date_publ')}>
                         По дате издания
-                    </DropdownItem>
-                    <DropdownItem onClick={() => requestSort('authors')}
-                                  className={getClassNamesFor('authors')}>
-                        По авторам
                     </DropdownItem>
                 </DropdownButton>
                     <DropdownButton title="Фильтровать" className="ml-2" variant={"outline-light"} style={{zIndex:100} }>

@@ -65,7 +65,7 @@ const NavBar = observer(() => {
                         setSearchQuery={setSearchQuery}
                     />
                     </div>
-                            <div className="dropdown-content">
+                            <div className="dropdown-content"  style={{height:"150px", overflowY:' scroll'}}>
                                 {filteredPosts.map(post => (
                                     <a key={post.key} href={"/publication/"+post.id}>{post.title}</a>
                                 ))}
