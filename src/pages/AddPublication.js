@@ -39,7 +39,32 @@ const AddPublication = observer(() => {
     const [file, setFile] = useState('')
 
     const Create = () => {
+        if(title === undefined || "")
+            return alert("Неправильно введено название")
+        if(short_review === undefined || "")
+            return alert("Неправильно введено краткое описание")
+        if(pages === undefined || "")
+            return alert("Невыбрано количество страниц")
+        if(author_id === undefined || "")
+            return alert("Невыбран автор")
+        if(themeId === undefined || "")
+            return alert("Невыбрана тема")
+        if(typeId === undefined || "")
+            return alert("Невыбран тип ")
+        if(regionId === undefined || "")
+            return alert("Невыбран регион")
+        if(date_publ === undefined || "")
+            return alert("Неправильно введена дата публикации")
+        if(date_create === undefined || "")
+            return alert("Неправильно введена дата создания")
+        if(dialectId === undefined || "")
+            return alert("Невыбран язык публикации")
+        if(publicatorId === undefined || "")
+            return alert("Невыбран издатель")
+        if(document.getElementById('ze_best_file').files.length === 0)
+            return alert("Невыбран файл")
         try {
+            
             const fl = document.getElementById('ze_best_file').files[0]
         createPublication({title: title, short_review: short_review, pages: pages,
         authorId: author_id, themeId: themeId, typeId: typeId, regionId:regionId, date_publ: date_publ,
