@@ -137,14 +137,14 @@ const Publication = observer(() => {
                     <p className="small-text"> Другие публикации автора:</p>
                     {publication.publications.filter((data)=> {if (data.authorId === publictn.publication.authorId
                         && data.id !== publictn.publication.id) return data}).map(data =>
-                        <p>{data.title}</p>
+                        <p><a href={PUBLICATION_ROUTE+"/"+data.id} target="_blank" style={{color:"white"}}>{data.title}</a></p>
                     )}
                 </div>
             </Col>
         </Row>
         <a href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank"
-           className="d-flex justify-content-center" download>Открыть для чтения</a>
-        <a href={MARKS_ROUTE + '/'+ publictn.publication.id} className="d-flex justify-content-center">Отзывы</a>
+           className="d-flex justify-content-center" style={{color:"white"}} download>Открыть для чтения</a>
+        <a href={MARKS_ROUTE + '/'+ publictn.publication.id} style={{color:"white"}} className="d-flex justify-content-center">Отзывы</a>
             </div>
     }
 

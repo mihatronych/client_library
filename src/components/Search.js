@@ -20,7 +20,7 @@ const Search = observer(({ searchQuery, setSearchQuery }) => {
                 onChange={e => setSearchQuery(e.target.value)}
                 type="text"
                 id="header-search"
-                placeholder="Поиск публикаций"
+                placeholder="Поиск публикаций &#128269;"
                 name="s"
             />
         </form>
