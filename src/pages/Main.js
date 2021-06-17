@@ -36,7 +36,7 @@ const Main = observer(() => {
         if (count === 0){
             count = 1
         }
-        return <div>рейтинг: {sum/(count)}</div>
+        return <div>рейтинг: {Math.round(sum/(count) * 100)/100}</div>
     }
 
     const [pageNumber, setPageNumber] = useState(0)
