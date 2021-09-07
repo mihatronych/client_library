@@ -1,4 +1,4 @@
-import {$authHost, $host} from "./index";
+import {$host} from "./index";
 
 export const fetchLanguage = async () => {
     const {data} = await $host.get('api/language/')

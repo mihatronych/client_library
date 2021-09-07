@@ -3,14 +3,11 @@ import {Context} from "../index";
 import {Button, Card, Container, Form} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import {createPublication, fetchAuthor, fetchPublication, fetchRegion, fetchType} from "../http/library_api";
-import {fetchMark} from "../http/mark_api";
 import {fetchDialect} from "../http/lang_api";
 import {fetchTheme} from "../http/theme_topic_api";
 import {observer} from "mobx-react-lite";
-import {set} from "mobx";
-import {LOGIN_ROUTE, MAIN_ROUTE} from "../utils/consts";
+import {MAIN_ROUTE} from "../utils/consts";
 import {useHistory} from "react-router-dom";
-
 
 
 const AddPublication = observer(() => {
@@ -34,35 +31,35 @@ const AddPublication = observer(() => {
     const [regionId, setRegionId] = useState('')
     const [publicatorId, setPublicatorId] = useState('')
     const [typeId, setTypeId] = useState('')
-    const [date_publ, setDate_publ] = useState(new Date().toISOString())
-    const [date_create, setDate_create] = useState(new Date().toISOString())
+    const [date_publ] = useState(new Date().toISOString())
+    const [date_create] = useState(new Date().toISOString())
     const [file, setFile] = useState('')
 
     const Create = () => {
         if(title === undefined || title === "")
-            return alert("Невведено название")
+            return alert("Не введено название")
         if(short_review === undefined || short_review ==="")
-            return alert("Невведено краткое описание")
+            return alert("Не введено краткое описание")
         if(pages === undefined || pages === "")
-            return alert("Невыбрано количество страниц")
+            return alert("Не выбрано количество страниц")
         if(author_id === undefined ||author_id === "")
-            return alert("Невыбран автор")
+            return alert("Не выбран автор")
         if(themeId === undefined ||themeId ===  "")
-            return alert("Невыбрана тема")
+            return alert("Не выбрана тема")
         if(typeId === undefined || typeId === "")
-            return alert("Невыбран тип ")
+            return alert("Не выбран тип ")
         if(regionId === undefined ||regionId === "")
-            return alert("Невыбран регион")
+            return alert("Не выбран регион")
         if(date_publ === undefined || date_publ === "")
             return alert("Неправильно введена дата публикации")
         if(date_create === undefined || date_create ==="")
             return alert("Неправильно введена дата создания")
         if(dialectId === undefined ||dialectId === "")
-            return alert("Невыбран язык публикации")
+            return alert("Не выбран язык публикации")
         if(publicatorId === undefined || publicatorId === "")
-            return alert("Невыбран издатель")
+            return alert("Не выбран издатель")
         if(document.getElementById('ze_best_file').files.length === 0)
-            return alert("Невыбран файл")
+            return alert("Не выбран файл")
         try {
             
             const fl = document.getElementById('ze_best_file').files[0]

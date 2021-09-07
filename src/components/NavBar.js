@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Context} from "../index";
-import  {Col,Button, Navbar, Container} from "react-bootstrap";
+import  {Button, Navbar, Container} from "react-bootstrap";
 import {Nav} from "react-bootstrap";
 import {NavLink, useHistory} from "react-router-dom";
 import {LOGIN_ROUTE, MAIN_ROUTE} from "../utils/consts";
@@ -10,7 +10,6 @@ import LanguageMenu from "./LanguageMenu";
 import AdditionalMenu from "./AdditionalMenu";
 import "../styles.css"
 import Search from "./Search";
-import {fetchPublication} from "../http/library_api";
 
 const phantom = {
     display: 'block',

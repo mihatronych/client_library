@@ -4,7 +4,7 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {useHistory} from "react-router-dom";
-import {fetchAuthor, fetchPublication} from "../http/library_api";
+import { fetchPublication} from "../http/library_api";
 import {fetchDialect, fetchLanguage} from "../http/lang_api";
 import {PUBLICATION_ROUTE} from "../utils/consts";
 
@@ -15,11 +15,12 @@ const LanguageMenu = observer(() => {
         fetchDialect().then(data => language.setDialects(data))
         fetchLanguage().then(data => language.setLanguages(data))
         fetchPublication().then(data => publication.setPublications(data))
-    }, [])
+    }, [language, publication])
 
     const getFilteredBooks = async(dialectId) => {
         superFilter.setFilter(language.dialects.find(a => a.id === dialectId))
-        superFilter.setFiltered(publication.publications.filter((data) => {if (data.dialectId === parseInt(dialectId)) return data}))
+        superFilter.setFiltered(publication.publications.filter((data) => {if (data.dialectId === parseInt(dialectId)) return data
+            return null}))
         return history.push(PUBLICATION_ROUTE)
     }
 
@@ -29,7 +30,8 @@ const LanguageMenu = observer(() => {
                 {language.dialects.map(dialect =>
                     <DropdownItem onClick={() => getFilteredBooks(dialect.id)}>
                         {dialect.name} : {language.languages.map(language =>
-                    {if (language.id === dialect.languageId) return <i>{language.name}</i>}
+                    {if (language.id === dialect.languageId) return <i>{language.name}</i>
+                        return null}
                     )}
                     </DropdownItem>
                 )}

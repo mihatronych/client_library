@@ -1,8 +1,6 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import '../styles.css';
-import {Context} from "../index";
 import {observer} from "mobx-react-lite";
-import {fetchAuthor, fetchPublication, fetchRegion, fetchType} from "../http/library_api";
 import {useHistory} from "react-router-dom";
 
 

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import  {Row,Button, Card, Col, Container} from "react-bootstrap";
-import {Link, useParams, useHistory} from "react-router-dom";
+import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {useHistory, useParams} from "react-router-dom";
 import {Context} from "../index";
 import {
     deletePublication,
@@ -14,9 +14,8 @@ import {
 import {fetchTheme, fetchTopic} from "../http/theme_topic_api";
 import {fetchMark} from "../http/mark_api";
 import {fetchDialect} from "../http/lang_api";
-import DropdownItem from "react-bootstrap/DropdownItem";
 import {observer} from "mobx-react-lite";
-import {LOGIN_ROUTE, MAIN_ROUTE, MARKS_ROUTE, PUBLICATION_ROUTE} from "../utils/consts";
+import {MAIN_ROUTE, MARKS_ROUTE, PUBLICATION_ROUTE} from "../utils/consts";
 
 const Publication = observer(() => {
     const {publication, mark, theme, language, publictn} = useContext(Context)
@@ -37,22 +36,22 @@ const Publication = observer(() => {
         fetchDialect().then(data => publication.setDialects(data))
         fetchTheme().then(data => publication.setThemes(data))
         fetchPublicator().then(data => publication.setPublicators(data))
-        }, [])
+        }, [id, mark, publictn, theme, publication])
     console.log(publicn)
     ////////// Сетить штуки через setState!!!!!!!!!
+
     const meanMark = (publicationId) =>{
-        let count = 0
         let sum = 0
+        let count = 0
         mark.marks.map(items => {
-            if (items.publicationId === parseInt(publicationId))
+            if (parseInt(publicationId) === items.publicationId)
             {
                 count += 1
                 sum += parseInt(items.rate)
             }
+        return null
         })
-        if (count === 0){
-            count = 1
-        }
+        if (count === 0){ count = 1 }
         return <i>{(sum/(count)).toFixed(2)}</i>
     }
 
@@ -75,6 +74,7 @@ const Publication = observer(() => {
                     <p className="small-text"> Автор {publication.authors.map(items => {
                         if (items.id === parseInt(publictn.publication.authorId))
                             return <i className="m-auto"> {items.name}</i>
+                        return null
                     })}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
@@ -84,6 +84,7 @@ const Publication = observer(() => {
                     <p className="small-text"> Тип {publication.types.map(items => {
                         if (items.id === parseInt(publictn.publication.typeId))
                             return <i>{items.name} </i>
+                        return null
                     })
                     }</p>
                 </div>
@@ -94,6 +95,7 @@ const Publication = observer(() => {
                     <p className="small-text"> Издательство {publication.publicators.map(items => {
                         if (items.id === parseInt(publictn.publication.publicatorId))
                             return <i>{items.name} </i>
+                        return null
                     })}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
@@ -102,10 +104,12 @@ const Publication = observer(() => {
                                 return <i>
                                     {dialect.name} : {language.languages.map(language => {
                                         if (language.id === dialect.languageId) return <i>{language.name}</i>
+                                    return null
                                     }
                                 )}
                                 </i>
-                        }
+                        return null
+                    }
                     )}
                     </p>
                 </div>
@@ -115,10 +119,11 @@ const Publication = observer(() => {
                                 return <i>
                                     {themez.name} : {theme.topics.map(topic => {
                                         if (themez.id === topic.themeId) return <i>{topic.subject}; </i>
+                                    return null
                                     }
                                 )}
                                 </i>
-                        }
+                        return null}
                     )}
                     </p>
                 </div>
@@ -126,6 +131,7 @@ const Publication = observer(() => {
                     <p className="small-text"> Регион {publication.regions.map(items => {
                         if (items.id === parseInt(publictn.publication.regionId))
                             return <i>{items.name} </i>
+                    return null
                     })}</p>
                 </div>
                 <div className="d-flex justify-content-between container">
@@ -136,13 +142,14 @@ const Publication = observer(() => {
                 <div className="">
                     <p className="small-text"> Другие публикации автора:</p>
                     {publication.publications.filter((data)=> {if (data.authorId === publictn.publication.authorId
-                        && data.id !== publictn.publication.id) return data}).map(data =>
-                        <p><a href={PUBLICATION_ROUTE+"/"+data.id} target="_blank" style={{color:"white"}}>{data.title}</a></p>
+                        && data.id !== publictn.publication.id) return data
+                    return null}).map(data =>{
+                        return <p><a href={PUBLICATION_ROUTE+"/"+data.id} target="_blank" rel="noreferrer" style={{color:"white"}}>{data.title}</a></p>}
                     )}
                 </div>
             </Col>
         </Row>
-        <a href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank"
+        <a href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank" rel="noreferrer"
            className="d-flex justify-content-center" style={{color:"white"}} download>Открыть для чтения</a>
         <a href={MARKS_ROUTE + '/'+ publictn.publication.id} style={{color:"white"}} className="d-flex justify-content-center">Отзывы</a>
             </div>
@@ -156,7 +163,7 @@ const Publication = observer(() => {
             {useEffect(() => {
                 fetchPublication().then(data => publication.setPublications(data))
                 fetchOnePublication(id).then(data => publictn.setPublication(data))
-                fetchOnePublication(id).then(data => setPublicn(data))}, [])}
+                fetchOnePublication(id).then(data => setPublicn(data))}, [id, publication, publictn])}
             <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 {DisplayData()}
                 <div className="d-inline-flex justify-content-center  mt-3 ">

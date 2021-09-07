@@ -1,6 +1,5 @@
 import {$authHost, $host} from "./index";
 import jwt_decode from "jwt-decode";
-import {set} from "mobx";
 
 
 export const registration = async (email, name, password) => {

@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {Link, useHistory, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {fetchAuthor, fetchOnePublication, fetchPublication} from "../http/library_api";
 import {Context} from "../index";
 import {fetchMark} from "../http/mark_api";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
-import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, CartesianGrid, Legend, XAxis, YAxis} from "recharts";
 import Tooltip from "@material-ui/core/Tooltip";
 import '../styles.css';
 
@@ -14,7 +14,6 @@ const Marks = observer(() => {
     const {mark, user} = useContext(Context)
     const [publicn, setPublicn] = useState({info: []})
     const {id} = useParams()
-    const history = useHistory()
     useEffect(() => {
         fetchOnePublication(id).then(data => setPublicn(data))
         fetchPublication().then(data => mark.setPublications(data))
@@ -28,7 +27,6 @@ const Marks = observer(() => {
     const pagesVisited = pageNumber * marksPerPage
     const sortedMarks = mark.marks.slice()
         .filter((a)=> a.publicationId === publicn.id)
-        //.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)).reverse()
 
     const displayMarks = sortedMarks
         .slice(pagesVisited, pagesVisited + marksPerPage)
@@ -40,6 +38,7 @@ const Marks = observer(() => {
                         <div className="m-4">
                         {mark.authors.map(author => {
                             if(author.id === mak.authorId) return <div>Автор отзыва: {author.name}</div>
+                            return null
                         })}
                         </div>
 
@@ -67,6 +66,7 @@ const Marks = observer(() => {
                 count += 1
                 sum += parseInt(items.rate)
             }
+            return null
         })
         if (count === 0){
             count = 1
@@ -82,18 +82,13 @@ const Marks = observer(() => {
     const graphData= () =>{
         let i = 1;
         while (i < 11) {
-
             let count = 0
-            let absCount = 0
             mark.marks.map(items => {
                 if (items.publicationId === parseInt(id) && parseInt(items.rate)===parseInt(i))
                 {
                     count += 1
                 }
-                if (items.publicationId === parseInt(id) )
-                {
-                    absCount += 1
-                }
+                return null
             })
 
             ar.push({

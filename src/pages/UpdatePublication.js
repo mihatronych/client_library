@@ -3,20 +3,18 @@ import {Context} from "../index";
 import {Button, Card, Container, Form} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import {
-    fetchAuthor, fetchOnePublication,
+    fetchAuthor,
+    fetchOnePublication,
     fetchPublication,
     fetchRegion,
     fetchType,
     updatePublication
 } from "../http/library_api";
-import {fetchMark} from "../http/mark_api";
 import {fetchDialect} from "../http/lang_api";
 import {fetchTheme} from "../http/theme_topic_api";
 import {observer} from "mobx-react-lite";
-import {set} from "mobx";
-import {LOGIN_ROUTE, MAIN_ROUTE, PUBLICATION_ROUTE} from "../utils/consts";
+import {PUBLICATION_ROUTE} from "../utils/consts";
 import {useHistory, useParams} from "react-router-dom";
-
 
 
 const UpdatePublication = observer(() => {
@@ -42,7 +40,7 @@ const UpdatePublication = observer(() => {
         fetchOnePublication(id).then(data => setRegionId(data.regionId))
         fetchOnePublication(id).then(data => setPublicatorId(data.publicatorId))
         fetchOnePublication(id).then(data => setTypeId(data.typeId))
-    }, [publication])
+    }, [publication, id])
     const [title, setTitle] = useState(publicn.title)
     const [short_review, setShort_review] = useState(publicn.short_review)
     const [pages, setPages] = useState(publicn.pages)
@@ -52,9 +50,9 @@ const UpdatePublication = observer(() => {
     const [regionId, setRegionId] = useState(publicn.regionId)
     const [publicatorId, setPublicatorId] = useState(publicn.publicatorId)
     const [typeId, setTypeId] = useState(publicn.typeId)
-    const [date_publ, setDate_publ] = useState(publicn.date_publ)
-    const [date_create, setDate_create] = useState(publicn.date_create)
-    const [file, setFile] = useState('')
+    const [date_publ] = useState(publicn.date_publ)
+    const [date_create] = useState(publicn.date_create)
+    const [file] = useState('')
     const Update = () => {
         try {
             updatePublication({id: publicn.id,title: title, short_review: short_review, pages: pages,
@@ -92,10 +90,12 @@ const UpdatePublication = observer(() => {
                                           onChange={e => setAuthorId(e.target.value)}
                             >
                                 {publication.authors.map(author =>
-                                {if (author.id === publicn.authorId) return <option defaultChecked value={author.id}>{author.name}</option>}
+                                {if (author.id === publicn.authorId) return <option defaultChecked value={author.id}>{author.name}</option>
+                                return null}
                                 )}
                                 {publication.authors.map(author =>
-                                    {if (author.id !== publicn.authorId) return <option value={author.id}>{author.name}</option>}
+                                    {if (author.id !== publicn.authorId) return <option value={author.id}>{author.name}</option>
+                                        return null}
                                 )}
                             </Form.Control>
                         </Form.Group>
@@ -105,10 +105,12 @@ const UpdatePublication = observer(() => {
                                           value={themeId}
                                           onChange={e => setThemeId(e.target.value)}>
                                 {publication.themes.map(theme =>
-                                    {if (theme.id === publicn.themeId) return <option defaultChecked value={theme.id}>{theme.name}</option>}
+                                    {if (theme.id === publicn.themeId) return <option defaultChecked value={theme.id}>{theme.name}</option>
+                                        return null}
                                 )}
                                 {publication.themes.map(theme =>
-                                    {if (theme.id !== publicn.themeId) return <option value={theme.id}>{theme.name}</option>}
+                                    {if (theme.id !== publicn.themeId) return <option value={theme.id}>{theme.name}</option>
+                                        return null}
                                 )}
                             </Form.Control>
                         </Form.Group>
@@ -118,10 +120,12 @@ const UpdatePublication = observer(() => {
                                           value={typeId}
                                           onChange={e => setTypeId(e.target.value)}>
                                 {publication.types.map(typez =>
-                                    {if (typez.id === publicn.typeId) return <option defaultChecked value={typez.id}>{typez.name}</option>}
+                                    {if (typez.id === publicn.typeId) return <option defaultChecked value={typez.id}>{typez.name}</option>
+                                        return null}
                                 )}
                                 {publication.types.map(typez =>
-                                    {if (typez.id !== publicn.typeId) return <option value={typez.id}>{typez.name}</option>}
+                                    {if (typez.id !== publicn.typeId) return <option value={typez.id}>{typez.name}</option>
+                                        return null}
                                 )}
                             </Form.Control>
                         </Form.Group>
@@ -146,10 +150,12 @@ const UpdatePublication = observer(() => {
                                           value={publicatorId}
                                           onChange={e => setPublicatorId(e.target.value)}>
                                 {publication.publicators.map(publ =>
-                                    {if (publ.id === publicn.publicatorId) return <option defaultChecked value={publ.id}>{publ.name}</option>}
+                                    {if (publ.id === publicn.publicatorId) return <option defaultChecked value={publ.id}>{publ.name}</option>
+                                        return null}
                                 )}
                                 {publication.publicators.map(publ =>
-                                    {if (publ.id !== publicn.publicatorId) return <option value={publ.id}>{publ.name}</option>}
+                                    {if (publ.id !== publicn.publicatorId) return <option value={publ.id}>{publ.name}</option>
+                                        return null}
                                 )}
                             </Form.Control>
                         </Form.Group>
@@ -159,10 +165,12 @@ const UpdatePublication = observer(() => {
                                           value={dialectId}
                                           onChange={e => setDialectId(e.target.value)}>
                                 {publication.dialects.map(dialect =>
-                                    {if (dialect.id === publicn.dialectId) return <option defaultChecked value={dialect.id}>{dialect.name}</option>}
+                                    {if (dialect.id === publicn.dialectId) return <option defaultChecked value={dialect.id}>{dialect.name}</option>
+                                        return null}
                                 )}
                                 {publication.dialects.map(dialect =>
-                                    {if (dialect.id !== publicn.dialectId) return <option value={dialect.id}>{dialect.name}</option>}
+                                    {if (dialect.id !== publicn.dialectId) return <option value={dialect.id}>{dialect.name}</option>
+                                        return null}
                                 )}
 
                             </Form.Control>
@@ -173,10 +181,12 @@ const UpdatePublication = observer(() => {
                                           value={regionId}
                                           onChange={e => setRegionId(e.target.value)}>
                                 {publication.regions.map(region =>
-                                    {if (region.id === publicn.regionId) return <option defaultChecked value={region.id}>{region.name}</option>}
+                                    {if (region.id === publicn.regionId) return <option defaultChecked value={region.id}>{region.name}</option>
+                                        return null}
                                 )}
                                 {publication.regions.map(region =>
-                                    {if (region.id !== publicn.regionId) return <option value={region.id}>{region.name}</option>}
+                                    {if (region.id !== publicn.regionId) return <option value={region.id}>{region.name}</option>
+                                        return null}
                                 )}
                             </Form.Control>
                         </Form.Group>

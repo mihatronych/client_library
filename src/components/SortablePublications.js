@@ -1,18 +1,16 @@
-import React, {useContext, useState} from 'react';
+import React, { useState, useRef} from 'react';
 import {Card, Col, DropdownButton, Row, Button} from "react-bootstrap";
 
 import {Context} from "../index";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import ReactPaginate from 'react-paginate';
-import {deletePublication, fetchPublication} from "../http/library_api";
-import {MAIN_ROUTE, PUBLICATION_ROUTE} from "../utils/consts";
-import {useHistory} from "react-router-dom";
 
 const useSortableData = (items, sConfig, fConfig = null) => {
     const [sortConfig, setSortConfig] = React.useState(sConfig);
     const [filterConfig, setFilterConfig] = React.useState(fConfig);
     const {mark} = React.useContext(Context)
-    let t = false
+    //let t = false
+    const refT = useRef(false);
     const sortedItems = React.useMemo(() => {
         let sortableItems = [...items];
         if (sortConfig !== null && sortConfig !== undefined) {
@@ -38,6 +36,7 @@ const useSortableData = (items, sConfig, fConfig = null) => {
                 count += 1
                 sum += parseInt(items.rate)
             }
+            return null
         })
         if (count === 0){
             count = 1
@@ -46,15 +45,19 @@ const useSortableData = (items, sConfig, fConfig = null) => {
     }
 
     const filteredItems = React.useMemo(() => {
-        let filterableItems = [...sortedItems];
         if (filterConfig !== null) {
-            t = true
+            refT.current = true
             switch(filterConfig.key){
-                case '1': return sortedItems.filter((data) => {if (parseInt(data.pages) <= 100) return data});
-                case '2': return sortedItems.filter((data) => {if (parseInt(data.pages) >= 100) return data});
-                case '3': return sortedItems.filter((data) => {if (meanMark(data.id) >= 7) return data});
-                case '4': return sortedItems.filter((data) => {if (meanMark(data.id) >= 8) return data});
-                case '5': return sortedItems.filter((data) => {if (meanMark(data.id) >= 9) return data});
+                case '1': return sortedItems.filter((data) => {if (parseInt(data.pages) <= 100) return data
+                return null});
+                case '2': return sortedItems.filter((data) => {if (parseInt(data.pages) >= 100) return data
+                    return null});
+                case '3': return sortedItems.filter((data) => {if (meanMark(data.id) >= 7) return data
+                    return null});
+                case '4': return sortedItems.filter((data) => {if (meanMark(data.id) >= 8) return data
+                    return null});
+                case '5': return sortedItems.filter((data) => {if (meanMark(data.id) >= 9) return data
+                    return null});
                 default: return sortedItems
             }
         }
@@ -62,7 +65,7 @@ const useSortableData = (items, sConfig, fConfig = null) => {
             return sortedItems
         }
 
-    }, [items, filterConfig]);
+    }, [filterConfig, sortedItems]);
 
     const requestSort = (key) => {
         let direction = 'ascending';
@@ -79,19 +82,20 @@ const useSortableData = (items, sConfig, fConfig = null) => {
     const requestFilter = (key) => {
         setFilterConfig({ key });
     }
-    if (!t) {
+    if (!refT.current) {
+        refT.current = false
         return {items: sortedItems, requestSort, requestFilter, sConfig, fConfig};
     }
     else
     {
+        refT.current = false
         return {items: filteredItems, requestSort, requestFilter, sConfig, fConfig};
     }
 };
 
 
 const SortablePublications = (props) => {
-    const {user, superFilter, publication} = React.useContext(Context)
-    const history = useHistory()
+    const {user, superFilter} = React.useContext(Context)
 
     const meanMark = (publicationId) =>{
         let count = 0
@@ -102,6 +106,7 @@ const SortablePublications = (props) => {
                 count += 1
                 sum += parseInt(items.rate)
             }
+            return null
         })
         if (count === 0){
             count = 1
@@ -109,15 +114,7 @@ const SortablePublications = (props) => {
         return <div>рейтинг: {Math.round(sum/(count)*100)/100}</div>
     }
 
-    let { items, requestSort,requestFilter, sortConfig,  filterConfig} = useSortableData(props.publications);
-
-    const Delete = (id) => {
-        deletePublication(id).then()
-        alert("Запись удалена")
-        fetchPublication(data=> publication.setPublications(data)).then()
-        items = publication.publications
-        history.push(PUBLICATION_ROUTE)
-    }
+    let { items, requestSort,requestFilter, sortConfig} = useSortableData(props.publications);
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
@@ -132,37 +129,37 @@ const SortablePublications = (props) => {
     const pagesVisited = pageNumber * publicationsPerPage
     const displayPublications = items
         .slice(pagesVisited, pagesVisited + publicationsPerPage)
-        .map(item =>
-
-                <div className="d-flex justify-content-between container mt-3" style={
-                    { backgroundColor:'#3366CC', color:"white"}
-                }>
-                    <Row>
-                        <Col>
+        .map(item => {
+            return <div className="d-flex justify-content-between container mt-3" style={
+                {backgroundColor: '#3366CC', color: "white"}
+            }>
+                <Row>
+                    <Col>
                         {props.types.map(items => {
                             if (items.id === parseInt(item.typeId))
                                 return <p className="m-auto ml-1">{items.name} </p>
+                            return null
                         })
                         }
                         <Col className="m-auto"> <b> {item.title}</b>
                             {props.authors.map(items => {
                                 if (items.id === parseInt(item.authorId))
                                     return <i className="m-auto"> - {items.name}</i>
+                                return null
                             })}
                         </Col>
                     </Col>
-                    </Row>
-                    <Row>
-                        <Col className="m-auto">Издание: {new Date(item.date_publ.toString()).toLocaleDateString()} </Col>
-                        <Col className="m-auto" >{item.pages} стр.</Col>
-                        <Col className="m-auto">{meanMark(item.id)}</Col>
-                        <Col className="m-auto"><Button href={"/publication/"+item.id}
-                                                        variant={"outline-light"}>Открыть</Button></Col>
-                    </Row>
-                </div>
+                </Row>
+                <Row>
+                    <Col className="m-auto">Издание: {new Date(item.date_publ.toString()).toLocaleDateString()} </Col>
+                    <Col className="m-auto">{item.pages} стр.</Col>
+                    <Col className="m-auto">{meanMark(item.id)}</Col>
+                    <Col className="m-auto"><Button href={"/publication/" + item.id}
+                                                    variant={"outline-light"}>Открыть</Button></Col>
+                </Row>
+            </div>
 
-        )
-
+        })
 
     const pageCount = Math.ceil( items.length / publicationsPerPage);
 

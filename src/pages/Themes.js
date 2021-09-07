@@ -17,12 +17,14 @@ const Themes = observer(() => {
     }, [theme])
 
     const countBooksOfTheme = (themeId) => {
-        return theme.publications.filter((data) => {if (data.themeId === parseInt(themeId)) return data}).length
+        return theme.publications.filter((data) => {if (data.themeId === parseInt(themeId)) return data
+        return null}).length
     }
 
     const getFilteredBooks = async(themeId) => {
         superFilter.setFilter(theme.themes.find(a => a.id === themeId))
-        superFilter.setFiltered(theme.publications.filter((data) => {if (data.themeId === parseInt(themeId)) return data}))
+        superFilter.setFiltered(theme.publications.filter((data) => {if (data.themeId === parseInt(themeId)) return data
+        return null}))
         return history.push(PUBLICATION_ROUTE)
     }
 
@@ -32,7 +34,8 @@ const Themes = observer(() => {
         }>
             <p className="m-auto">{themez.name}</p>
             <p className="m-auto">подтемы:
-                {theme.topics.filter((data) => {if (data.themeId === themez.id) return  data})
+                {theme.topics.filter((data) => {if (data.themeId === themez.id) return  data
+                return null})
                     .map(topic =>
                         <i className="m-1">{topic.subject};</i>
                     )}

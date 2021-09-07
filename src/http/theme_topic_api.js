@@ -1,4 +1,4 @@
-import {$authHost, $host} from "./index";
+import {$host} from "./index";
 
 export const fetchTheme = async () => {
     const {data} = await $host.get('api/Theme/')

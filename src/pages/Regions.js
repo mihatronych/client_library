@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Button, Card, Container} from "react-bootstrap";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {Context} from "../index";
 import {fetchPublication, fetchRegion} from "../http/library_api";
 import {PUBLICATION_ROUTE} from "../utils/consts";
@@ -15,12 +15,14 @@ const Regions = observer(() => {
     }, [publication])
 
     const countBooksOfRegion = (regionId) => {
-        return publication.publications.filter((data) => {if (data.regionId === parseInt(regionId)) return data}).length
+        return publication.publications.filter((data) => {if (data.regionId === parseInt(regionId)) return data
+        return null}).length
     }
 
     const getFilteredBooks = async(regionId) => {
         superFilter.setFilter(publication.regions.find(a => a.id === regionId))
-        superFilter.setFiltered(publication.publications.filter((data) => {if (data.authorId === parseInt(regionId)) return data}))
+        superFilter.setFiltered(publication.publications.filter((data) => {if (data.authorId === parseInt(regionId)) return data
+        return null}))
         return history.push(PUBLICATION_ROUTE)
     }
 

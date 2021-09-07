@@ -5,10 +5,9 @@ import {fetchAuthor, fetchPublication, fetchRegion, fetchType} from "../http/lib
 import {fetchMark} from "../http/mark_api";
 import {fetchDialect} from "../http/lang_api";
 import {fetchTheme} from "../http/theme_topic_api";
-import {Card, Col, Container} from "react-bootstrap";
-import {Bar, BarChart, CartesianGrid, Legend, Pie, PieChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {Card, Container} from "react-bootstrap";
+import {Legend, Pie, PieChart} from "recharts";
 import Tooltip from "@material-ui/core/Tooltip";
-import {override} from "mobx";
 
 const Graphs = observer(() => {
     const {publication, mark} = useContext(Context)
@@ -36,11 +35,11 @@ const Graphs = observer(() => {
         publication.regions.map(region => {
 
             let count = 0
-            let absCount = 0
             publication.publications.map(item => {
                 if(item.regionId === region.id){
                     count += 1
                 }
+            return null
             })
 
             ar1.push({
@@ -48,6 +47,7 @@ const Graphs = observer(() => {
                 value: count,
                 fill: r_color()
             })
+        return null
         })
     }
 
@@ -55,13 +55,12 @@ const Graphs = observer(() => {
 
     const graphDataLanguages= () =>{
         publication.dialects.map(dialect => {
-
             let count = 0
-            let absCount = 0
             publication.publications.map(item => {
                 if(item.dialectId === dialect.id){
                     count += 1
                 }
+                return null
             })
 
             ar2.push({
@@ -69,7 +68,9 @@ const Graphs = observer(() => {
                 value: count,
                 fill: r_color()
             })
+            return null
         })
+        return null
     }
 
     let ar3 = []
@@ -78,11 +79,11 @@ const Graphs = observer(() => {
         publication.themes.map(theme => {
 
             let count = 0
-            let absCount = 0
             publication.publications.map(item => {
                 if(item.themeId === theme.id){
                     count += 1
                 }
+                return null
             })
 
             ar3.push({
@@ -90,7 +91,9 @@ const Graphs = observer(() => {
                 value: count,
                 fill: r_color()
             })
+            return null
         })
+        return null
     }
 
     const svgToPng = (svg, width, height) => {

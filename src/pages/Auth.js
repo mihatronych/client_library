@@ -6,7 +6,6 @@ import jwt_decode from "jwt-decode";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {login, registration} from "../http/user_api";
-import {fetchAuthor} from "../http/author_api";
 
 const Auth = observer(() => {
     const location = useLocation()

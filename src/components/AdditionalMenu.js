@@ -1,10 +1,9 @@
 import React, {useContext, useEffect} from 'react';
-import {Dropdown, DropdownButton, Nav} from "react-bootstrap";
+import {DropdownButton, Nav} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
-import {observer} from "mobx-react-lite";
 import {useHistory} from "react-router-dom";
 import {GRAPHS_ROUTE} from "../utils/consts";
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink} from "react-csv";
 import {Context} from "../index";
 import {fetchAuthor, fetchPublication, fetchPublicator, fetchRegion, fetchType} from "../http/library_api";
 import {fetchMark} from "../http/mark_api";
@@ -40,7 +39,8 @@ const AdditionalMenu = () => {
                 count += 1
                 sum += parseInt(items.rate)
             }
-        })
+        return sum})
+
         if (count === 0){
             count = 1
         }
@@ -84,7 +84,7 @@ const AdditionalMenu = () => {
             }catch {}
 
             csvData.push(rowAr)
-            }
+            return csvData}
         )
 
         return csvData

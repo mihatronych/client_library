@@ -32,6 +32,7 @@ const Main = observer(() => {
                 count += 1
                 sum += parseInt(items.rate)
             }
+            return null
         })
         if (count === 0){
             count = 1
@@ -57,12 +58,14 @@ const Main = observer(() => {
                         {publication.types.map(items => {
                             if (items.id === parseInt(publicat.typeId))
                                 return <p className="m-auto ml-1">{items.name} </p>
+                            return null
                         })
                         }
                         <Col className="m-auto"> <b> {publicat.title}</b>
                             {publication.authors.map(items => {
                                 if (items.id === parseInt(publicat.authorId))
                                     return <i className="m-auto"> - {items.name}</i>
+                                return null
                             })}
                         </Col>
                         </Col>
