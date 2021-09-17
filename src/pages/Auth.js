@@ -36,8 +36,14 @@ const Auth = observer(() => {
                 console.log(data)
 
             } else {
+                let re = /\S+@\S+\.\S+/
                 console.log(email, name, password)
-                data = await registration(email, name, password);
+                if(email.match(re)){
+                    data = await registration(email, name, password);
+                }
+                else{
+                    return alert("Почта введена неправильно")
+                }
             }
             if(data) {
                 user.setIsAuth(true)
@@ -63,19 +69,23 @@ const Auth = observer(() => {
                         className="mt-3"
                         placeholder="Введите ваше имя/псевдоним..."
                         value={name}
+                        required
                         onChange={e => setName(e.target.value)}
                     />: <div/> }
                     <Form.Control
                         className="mt-3"
                         placeholder="Введите ваш email..."
                         type="Email"
+                        pattern='/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i'
                         value={email}
+                        required
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
                         placeholder="Введите ваш пароль..."
                         value={password}
+                        required
                         onChange={e => setPassword(e.target.value)}
                         type="password"
                     />

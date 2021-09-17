@@ -148,7 +148,9 @@ const Graphs = observer(() => {
         transform: 'translate(0, -50%)',
         lineHeight: '24px',
     };
-
+    graphDataLanguages()
+    graphDataRegions()
+    graphDataThemes()
     return (
         <Container
             className="d-flex align-items-center"
@@ -162,7 +164,6 @@ const Graphs = observer(() => {
                     { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
                 }>
                     <h3 className="align-self-center"> Круговая диаграмма по языкам</h3>
-                    {graphDataLanguages()}
                     <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"
@@ -183,7 +184,6 @@ const Graphs = observer(() => {
                     { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
                 }>
                     <h3 className="align-self-center"> Круговая диаграмма по регионам</h3>
-                    {graphDataRegions()}
                     <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"
@@ -204,7 +204,6 @@ const Graphs = observer(() => {
                     { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
                 }>
                     <h3 className="align-self-center"> Круговая диаграмма по темам</h3>
-                    {graphDataThemes()}
                     <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"

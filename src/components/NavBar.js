@@ -10,6 +10,7 @@ import LanguageMenu from "./LanguageMenu";
 import AdditionalMenu from "./AdditionalMenu";
 import "../styles.css"
 import Search from "./Search";
+import {Grid} from "@material-ui/core";
 
 const phantom = {
     display: 'block',
@@ -72,6 +73,7 @@ const NavBar = observer(() => {
                 </div>
             {user.isAuth ?
                 <Nav className="ml-auto" style={{color: 'white'}}>
+                    <Grid variant={"outline-light"} style={{margin: 3}}>Пользователь: {user.user.name} </Grid>
                     <Button variant={"outline-light"} onClick={() => logOut()}>Выйти</Button>
                 </Nav> :
                 <Nav className="ml-auto" style={{color: 'white'}}>
