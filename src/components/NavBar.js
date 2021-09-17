@@ -53,8 +53,7 @@ const NavBar = observer(() => {
         <div>
         <Navbar variant="dark" className="mb-3" style={{backgroundColor:'#C06C84', position:'fixed', zIndex:'3', height: "60px", width: "100%",}}>
             <Container className="d-flex">
-                <div className="ico"/>
-            <NavLink style={{color:'white'}} to={MAIN_ROUTE}>Главная</NavLink>
+                <NavLink to={MAIN_ROUTE}><div className="ico"/></NavLink>
                 <ArchiveMenu className='col-sm-1'/>
                 <LanguageMenu className='col-sm-2'/>
                 <AdditionalMenu/>

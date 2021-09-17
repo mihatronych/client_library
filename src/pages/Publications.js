@@ -25,7 +25,7 @@ const Publications = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - 54}}
+            style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
             {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
             {superFilter.filtered === undefined ?

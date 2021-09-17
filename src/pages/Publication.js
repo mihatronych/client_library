@@ -158,7 +158,7 @@ const Publication = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - 54, zIndex:"-1"}}
+            style={{height:window.innerHeight - window.innerHeight*0.2, zIndex:"-1"}}
         >
             {useEffect(() => {
                 fetchPublication().then(data => publication.setPublications(data))

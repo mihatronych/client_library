@@ -153,13 +153,14 @@ const Graphs = observer(() => {
     graphDataThemes()
     return (
         <Container
-            className="d-flex align-items-center"
-            style={{height:window.innerHeight - window.innerHeight*0.2}}
+            className="d-flex justify-content-center align-items-center"
+            style={{padding:window.innerHeight - window.innerHeight*0.9}}
         >
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - window.innerWidth*0.1, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="align-self-center"> Статистика по публикациям</h2>
                 <div className="align-self-center" style={{width: window.innerWidth - window.innerWidth*0.6,
-                    height: window.innerHeight - window.innerHeight*0.6,overflowY:"scroll"}}>
+                    padding: 10
+                   }}>
                 <div className="mt-3 p-2 align-self-center"  style={
                     { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
                 }>

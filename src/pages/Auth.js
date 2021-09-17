@@ -60,7 +60,7 @@ const Auth = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - 54}}
+            style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
             <Card style={{width: 600, backgroundColor:'#C06C84', color:'white'}} className="p-5">
                 <h2 className="m-auto">{!isLogin ?  "Регистрация": "Авторизация"}</h2>
