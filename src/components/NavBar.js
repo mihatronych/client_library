@@ -20,7 +20,6 @@ const phantom = {
 }
 
 
-
 const NavBar = observer(() => {
     const {user, publication} = useContext(Context)
     const history = useHistory()
@@ -50,8 +49,8 @@ const NavBar = observer(() => {
 
 
     return (
-        <div>
-        <Navbar variant="dark" className="mb-3" style={{backgroundColor:'#C06C84', position:'fixed', zIndex:'3', height: "60px", width: "100%",}}>
+        <div style={{borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
+        <Navbar variant="dark" className="mb-3" style={{backgroundColor:'#C06C84', position:'fixed', zIndex:'3', height: "60px", width: "100%", borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
             <Container className="d-flex">
                 <NavLink to={MAIN_ROUTE}><div className="ico"/></NavLink>
                 <ArchiveMenu className='col-sm-1'/>
@@ -71,11 +70,11 @@ const NavBar = observer(() => {
                             </div>
                 </div>
             {user.isAuth ?
-                <Nav className="ml-auto" style={{color: 'white'}}>
+                <Nav className="ml-auto" style={{color: 'white', borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
                     <Grid variant={"outline-light"} style={{margin: 3}}>Пользователь: {user.user.name} </Grid>
                     <Button variant={"outline-light"} onClick={() => logOut()}>Выйти</Button>
                 </Nav> :
-                <Nav className="ml-auto" style={{color: 'white'}}>
+                <Nav className="ml-auto" style={{color: 'white', borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
                     <Button variant={"outline-light"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
                 </Nav>
             }
