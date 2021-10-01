@@ -219,11 +219,58 @@ const ExcelTable = observer(() => {
         return excelData
     }
 
+    const createCsvTable = (csvData) => {
+        csvData.push(['title', 'short_review', 'pages',
+            'date_publ', 'date_create', 'author', 'theme',
+            'dialect', 'region', 'publicator', 'type', 'mean_mark'])
+        let rowAr = [];
+        publication.publications.map(publ =>{
+            rowAr = []
+            rowAr.push("'"+publ.title.toString()+"'")
+            rowAr.push("'"+publ.short_review.toString()+"'")
+            rowAr.push("'"+publ.pages.toString()+"'")
+            rowAr.push("'"+publ.date_publ.toString()+"'")
+            rowAr.push("'"+publ.date_create.toString()+"'")
+            try {
+                rowAr.push("'" + publication.authors.find((a) => a.id === publ.authorId).name.toString() + "'")
+            }
+            catch {}
+            try {
+                rowAr.push("'"+publication.themes.find((a) => a.id === publ.themeId).name.toString()+"'")
+            }
+            catch {}
+            try {
+                rowAr.push("'" + publication.dialects.find((a) => a.id === publ.dialectId).name.toString() + "'")
+            }catch {}
+            try {
+                rowAr.push("'"+publication.regions.find((a) => a.id === publ.regionId).name.toString()+"'")
+            }catch {}
+            try {
+                rowAr.push("'"+publication.publicators.find((a) => a.id === publ.publicatorId).name.toString()+"'")
+            }catch {}
+            try {
+                rowAr.push("'"+publication.types.find((a) => a.id === publ.typeId).name.toString()+"'")
+            }catch {}
+            try {
+                rowAr.push("'"+meanMark(publ.id).toString()+"'")
+            }catch {}
+
+            csvData.push(rowAr)
+            return csvData}
+        )
+
+        return csvData
+    }
+
+    const csvData = [
+    ];
+
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
         >
             <Card style={{width: window.innerWidth - 100}} className="p-5 card">
+                <CSVLink class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
         <BasicSheet table={createExcelTable(excelData)} style={{fontSize: 12}}/>
                 </Card>
         </Container>
