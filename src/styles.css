@@ -249,7 +249,7 @@ img{
     display: none;
     position: absolute;
     background-color: #FFFFFF;
-    min-width: 160px;
+
     box-shadow: rgba(52, 100, 204, 0.1);
     z-index: 1;
 }
@@ -263,14 +263,20 @@ img{
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: rgba(52, 100, 204, 0.1);}
+.dropdown-content a:hover {background-color: rgba(52, 100, 204, 0.1); }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #FFFFFF;}
-
+.dropdown-item{
+    width: 84%;
+}
+.dropdown-item:hover
+{
+width: 84%;
+}
 TABLE {
     border: 1px double #399; /* Граница вокруг таблицы */
 }
