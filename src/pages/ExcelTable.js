@@ -11,7 +11,7 @@ import {observer} from "mobx-react-lite";
 import {Container} from "react-bootstrap";
 
 import '../override-everything.css'
-import {Card} from "@material-ui/core";
+import {Button, Card} from "@material-ui/core";
 
 const SheetRenderer = props => {
     const {as: Tag, headerAs: Header, bodyAs: Body, rowAs: Row, cellAs: Cell,
@@ -270,7 +270,9 @@ const ExcelTable = observer(() => {
             className="d-flex justify-content-center align-items-center"
         >
             <Card style={{width: window.innerWidth - 100}} className="p-5 card">
-                <CSVLink class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
+
+                    <CSVLink className="btn_special" style={{width:'240px', margin:'5px', }} class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
+
         <BasicSheet table={createExcelTable(excelData)} style={{fontSize: 12}}/>
                 </Card>
         </Container>

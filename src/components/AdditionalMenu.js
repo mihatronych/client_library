@@ -106,7 +106,6 @@ const AdditionalMenu = () => {
                 <DropdownItem onClick={() => toExcel()}>
                     Эксель таблица
                 </DropdownItem>
-                <CSVLink class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
             </DropdownButton>
         </Nav>
     );
