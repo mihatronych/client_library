@@ -266,3 +266,12 @@ img{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #FFFFFF;}
+
+TABLE {
+    border: 1px double #399; /* Граница вокруг таблицы */
+}
+TD {
+    border: 1px solid #333; /* Граница вокруг ячеек */
+    empty-cells: hide; /* Прячем пустые ячейки */
+    font-size: 8pt;
+}

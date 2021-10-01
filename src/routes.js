@@ -2,7 +2,7 @@ import Main from "./pages/Main";
 import {
     ADD_MARK_ROUTE,
     ADD_PUBLICATION_ROUTE,
-    AUTHORS_ROUTE, GRAPHS_ROUTE,
+    AUTHORS_ROUTE, EXCEL_TABLE, GRAPHS_ROUTE,
     LOGIN_ROUTE,
     MAIN_ROUTE, MARKS_ROUTE,
     PUBLICATION_ROUTE, REGIONS_ROUTE,
@@ -20,7 +20,7 @@ import UpdatePublication from "./pages/UpdatePublication";
 import Marks from "./pages/Marks";
 import AddMark from "./pages/AddMark";
 import Graphs from "./pages/Graphs";
-
+import ExcelTable from "./pages/ExcelTable";
 // ТОЛЬКО АВТОРИЗОВАННЫЕ
 export const authRoutes = [
 
@@ -78,5 +78,9 @@ export const publicRoutes = [
     {
         path: GRAPHS_ROUTE,
         Component: Graphs
+    },
+    {
+        path: EXCEL_TABLE,
+        Component: ExcelTable
     }
 ]

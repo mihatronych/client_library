@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {DropdownButton, Nav} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import {useHistory} from "react-router-dom";
-import {GRAPHS_ROUTE} from "../utils/consts";
+import {EXCEL_TABLE, GRAPHS_ROUTE} from "../utils/consts";
 import { CSVLink} from "react-csv";
 import {Context} from "../index";
 import {fetchAuthor, fetchPublication, fetchPublicator, fetchRegion, fetchType} from "../http/library_api";
@@ -15,6 +15,10 @@ const AdditionalMenu = () => {
     const history = useHistory()
     const toGraphs = async() => {
         return history.push(GRAPHS_ROUTE)
+    }
+
+    const toExcel = async() => {
+        return history.push(EXCEL_TABLE)
     }
 
     const {publication, mark,} = useContext(Context)
@@ -98,6 +102,9 @@ const AdditionalMenu = () => {
             <DropdownButton title="Дополнительно" style={{zIndex:100}}>
                 <DropdownItem onClick={() => toGraphs()}>
                     Региональная статистика
+                </DropdownItem>
+                <DropdownItem onClick={() => toExcel()}>
+                    Эксель таблица
                 </DropdownItem>
                 <CSVLink class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
             </DropdownButton>
