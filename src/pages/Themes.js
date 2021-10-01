@@ -29,9 +29,7 @@ const Themes = observer(() => {
     }
 
     const displayTable = theme.themes.map(themez => {
-        return <div className="d-flex justify-content-between container mt-3" style={
-            { backgroundColor:'#3366CC', color:"white"}
-        }>
+        return <div className="d-flex justify-content-between container mt-3 block_in_card">
             <p className="m-auto">{themez.name}</p>
             <p className="m-auto">подтемы:
                 {theme.topics.filter((data) => {if (data.themeId === themez.id) return  data
@@ -50,7 +48,7 @@ const Themes = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - 100}} className="p-5 card">
                 <h2 className="align-self-center"> Темы</h2>
                 <div>
                     {displayTable}

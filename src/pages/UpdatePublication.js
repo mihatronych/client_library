@@ -73,7 +73,7 @@ const UpdatePublication = observer(() => {
             className="d-flex justify-content-center align-items-center mt-4"
             style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
-            <Card style={{width: 600, backgroundColor:'#C06C84', color:'white'}} className="p-5 mt-4">
+            <Card style={{width: 600}} className="p-5 mt-4 card">
                 <h2 className="m-auto">Изменить публикацию {publicn.title}</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
@@ -194,8 +194,6 @@ const UpdatePublication = observer(() => {
 
                     <Button
                         className="d-flex mt-3 justify-content-center"
-                        variant={"dark"}
-                        style={{backgroundColor:"#6C5B7B"}}
                         onClick={Update}
                     >
                         Изменить

@@ -38,7 +38,7 @@ const AddMark = observer(() => {
             className="d-flex justify-content-center align-items-center mt-4"
             style={{height:window.innerHeight - 54}}
         >
-            <Card style={{width: 600, backgroundColor:'#C06C84', color:'white'}} className="p-5 mt-4">
+            <Card style={{width: 600}} className="p-5 mt-4 card">
                 <h2 className="m-auto">Новая публикация</h2>
                 <Form className="d-flex flex-column">
                     <Form.Group>
@@ -57,8 +57,6 @@ const AddMark = observer(() => {
 
                     <Button
                         className="d-flex mt-3 justify-content-center"
-                        variant={"dark"}
-                        style={{backgroundColor:"#6C5B7B"}}
                         onClick={Create}
                     >
                         Написать отзыв

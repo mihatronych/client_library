@@ -31,13 +31,11 @@ const Regions = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
-            <Card style={{width: window.innerWidth - window.innerWidth*0.6, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - window.innerWidth*0.6}} className="p-5 card">
                 <h2 className="align-self-center"> Регионы</h2>
                 <div>
                     {publication.regions.map(region =>
-                            <div className="d-flex justify-content-between container mt-3" style={
-                                { backgroundColor:'#3366CC', color:"white"}
-                            }>
+                            <div className="d-flex justify-content-between container mt-3 block_in_card">
                                 <p className="m-auto">{region.name}</p>
                                 <p className="m-auto">Публикаций: {countBooksOfRegion(region.id)}</p>
                                 <Button onClick={() => getFilteredBooks(region.id)} variant={"outline-light"}>К публикациям</Button>

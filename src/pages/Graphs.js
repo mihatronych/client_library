@@ -153,19 +153,14 @@ const Graphs = observer(() => {
     graphDataThemes()
     return (
         <Container
-            className="d-flex justify-content-center align-items-center"
-            style={{padding:window.innerHeight - window.innerHeight*0.9}}
+            className="d-flex justify-content-center align-items-center mt-4"
         >
-            <Card style={{width: window.innerWidth - window.innerWidth*0.1, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card className="p-5 card">
                 <h2 className="align-self-center"> Статистика по публикациям</h2>
-                <div className="align-self-center" style={{width: window.innerWidth - window.innerWidth*0.6,
-                    padding: 10
-                   }}>
-                <div className="mt-3 p-2 align-self-center"  style={
-                    { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
-                }>
-                    <h3 className="align-self-center"> Круговая диаграмма по языкам</h3>
-                    <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
+                <div className="align-self-center">
+                <div className="mt-3 p-2 align-self-center card_graphs" >
+                    <h3 className="align-self-center mb-4"> Круговая диаграмма по языкам</h3>
+                    <PieChart width={550} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"
                             isAnimationActive={false}
@@ -176,16 +171,13 @@ const Graphs = observer(() => {
                             fill="#8884d8"
                             label
                         />
-                        <Tooltip/>
                         <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
                     </PieChart>
                 </div>
 
-                <div className="mt-2 p-2 align-self-center"  style={
-                    { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
-                }>
-                    <h3 className="align-self-center"> Круговая диаграмма по регионам</h3>
-                    <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
+                <div className="mt-2 p-2 align-self-center card_graphs" >
+                    <h3 className="align-self-center mb-4"> Круговая диаграмма по регионам</h3>
+                    <PieChart width={550} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"
                             isAnimationActive={false}
@@ -196,16 +188,13 @@ const Graphs = observer(() => {
                             fill="#8884d8"
                             label
                         />
-                        <Tooltip/>
                         <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
                     </PieChart>
                 </div>
 
-                <div className="mt-2 p-2 align-self-center"  style={
-                    { backgroundColor:'#3366CC', color:"white", borderRadius: '10px'}
-                }>
-                    <h3 className="align-self-center"> Круговая диаграмма по темам</h3>
-                    <PieChart width={500} height={200} ref={ref => convertChart(ref)} >
+                <div className="mt-2 p-2 align-self-center card_graphs">
+                    <h3 className="align-self-center mb-4"> Круговая диаграмма по темам</h3>
+                    <PieChart width={550} height={200} ref={ref => convertChart(ref)} >
                         <Pie
                             dataKey="value"
                             isAnimationActive={false}
@@ -216,7 +205,6 @@ const Graphs = observer(() => {
                             fill="#8884d8"
                             label
                         />
-                        <Tooltip/>
                         <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
                     </PieChart>
                 </div>

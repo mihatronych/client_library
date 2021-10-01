@@ -18,7 +18,7 @@ const App = observer(() => {
                 user.setUser(data)
                 user.setIsAuth(true)
             }).finally(() => setLoading(false))
-        }, 500) //это имитация запроса потом setTimeout можно удалить
+        }, 100) //это имитация запроса потом setTimeout можно удалить
     }, [user])
     if (loading) {
         return <Spinner animation={"grow"}/>

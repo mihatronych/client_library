@@ -50,9 +50,7 @@ const Main = observer(() => {
         .slice(pagesVisited, pagesVisited + publicationsPerPage)
         .map(publicat =>
              <Link to={"/publication/"+publicat.id} style={{ textDecoration: 'none' }}>
-                <div className="d-flex justify-content-between container mt-3" style={
-                    { backgroundColor:'#3366CC', color:"white"}
-                }>
+                <div className="d-flex justify-content-between container mt-3 block_in_card">
                     <Row>
                         <Col>
                         {publication.types.map(items => {
@@ -94,7 +92,7 @@ const Main = observer(() => {
             style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
             {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - 100}} className="p-5 card">
                 <h2 className="align-self-center"> Новейшие публикации</h2>
                 <div >
                     {displayPublications}

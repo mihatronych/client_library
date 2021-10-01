@@ -49,14 +49,14 @@ const NavBar = observer(() => {
 
 
     return (
-        <div style={{borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
-        <Navbar variant="dark" className="mb-3" style={{backgroundColor:'#C06C84', position:'fixed', zIndex:'3', height: "60px", width: "100%", borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
+        <div>
+        <Navbar className="my-3 nav_bar">
             <Container className="d-flex">
                 <NavLink to={MAIN_ROUTE}><div className="ico"/></NavLink>
                 <ArchiveMenu className='col-sm-1'/>
                 <LanguageMenu className='col-sm-2'/>
                 <AdditionalMenu/>
-                <div className="ml-1 dropdown">
+                <div className="dropdown">
                     <div className="dropbtn">
                     <Search
                         searchQuery={searchQuery}
@@ -70,12 +70,12 @@ const NavBar = observer(() => {
                             </div>
                 </div>
             {user.isAuth ?
-                <Nav className="ml-auto" style={{color: 'white', borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
-                    <Grid variant={"outline-light"} style={{margin: 3}}>Пользователь: {user.user.name} </Grid>
-                    <Button variant={"outline-light"} onClick={() => logOut()}>Выйти</Button>
+                <Nav className="ml-auto">
+                    <Grid  className="mx-3 mt-2"> Пользователь: {user.user.name} </Grid>
+                    <Button className="btn_special" onClick={() => logOut()}>Выйти</Button>
                 </Nav> :
-                <Nav className="ml-auto" style={{color: 'white', borderBottom: "1px solid rgba(174, 174, 192, 0.4)",}}>
-                    <Button variant={"outline-light"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
+                <Nav className="ml-auto">
+                    <Button className="btn_special" onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
                 </Nav>
             }
             </Container>

@@ -164,12 +164,10 @@ const Publication = observer(() => {
                 fetchPublication().then(data => publication.setPublications(data))
                 fetchOnePublication(id).then(data => publictn.setPublication(data))
                 fetchOnePublication(id).then(data => setPublicn(data))}, [id, publication, publictn])}
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - 100}} className="p-5 card">
                 {DisplayData()}
                 <div className="d-inline-flex justify-content-center  mt-3 ">
                 <Button
-                variant={"dark"}
-                style={{backgroundColor:"#6C5B7B", textAlign:"center"}}
                 href={"/update_publication/"+id}
             >
                 Редактировать публикацию
@@ -177,8 +175,6 @@ const Publication = observer(() => {
                 </div>
                 <div className="d-inline-flex justify-content-center  mt-3 ">
                     <Button
-                    variant={"dark"}
-                    style={{backgroundColor:"#6C5B7B", textAlign:"center"}}
                     onClick={()=>Delete(id)}
                 >
                     Удалить публикацию

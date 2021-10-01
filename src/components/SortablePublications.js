@@ -130,9 +130,7 @@ const SortablePublications = (props) => {
     const displayPublications = items
         .slice(pagesVisited, pagesVisited + publicationsPerPage)
         .map(item => {
-            return <div className="d-flex justify-content-between container mt-3" style={
-                {backgroundColor: '#3366CC', color: "white"}
-            }>
+            return <div className="d-flex justify-content-between container mt-3 block_in_card">
                 <Row>
                     <Col>
                         {props.types.map(items => {
@@ -168,7 +166,7 @@ const SortablePublications = (props) => {
     };
 
     return (
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - 100}} className="p-5 card">
                 <Row className="m-2">
                     <Col>
                 <h3 className="align-self-auto"> Публикации {superFilter.filter.name}</h3>

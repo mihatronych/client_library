@@ -31,9 +31,7 @@ const Marks = observer(() => {
     const displayMarks = sortedMarks
         .slice(pagesVisited, pagesVisited + marksPerPage)
         .map(mak =>
-                <div className="mt-3 p-2" style={
-                    { backgroundColor:'#3366CC', color:"white"}
-                }>
+                <div className="mt-3 p-2 block_in_card">
                     <Row className="justify-content-between">
                         <div className="m-4">
                         {mark.authors.map(author => {
@@ -113,7 +111,7 @@ const Marks = observer(() => {
             style={{height:window.innerHeight - window.innerHeight*0.2}}
         >
             {useEffect(() => {fetchMark().then(data => mark.setMarks(data))}, [mark])}
-            <Card style={{width: window.innerWidth - 100, backgroundColor:'#C06C84', color:'white'}} className="p-5">
+            <Card style={{width: window.innerWidth - 100}} className="p-5 card">
                 <h2 className="align-self-center"> Отзывы о книге {publicn.title}</h2>
 
                 <Row>

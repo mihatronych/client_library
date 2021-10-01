@@ -94,8 +94,8 @@ const AdditionalMenu = () => {
     ];
 
     return (
-        <Nav className="ml-auto" style={{color: 'white'}}>
-            <DropdownButton title="Дополнительно" className="ml-2" variant={"outline-light"} style={{zIndex:100}}>
+        <Nav className="ml-auto">
+            <DropdownButton title="Дополнительно" style={{zIndex:100}}>
                 <DropdownItem onClick={() => toGraphs()}>
                     Региональная статистика
                 </DropdownItem>
