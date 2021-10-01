@@ -196,7 +196,7 @@ const UpdatePublication = observer(() => {
                         className="d-flex mt-3 justify-content-center"
                         onClick={Update}
                     >
-                        Изменить
+                        Редактировать
                     </Button>
                 </Form>
             </Card>
