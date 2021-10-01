@@ -43,7 +43,7 @@ const Authors = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - window.innerHeight*0.2, marginTop:window.innerHeight - window.innerHeight*0.9}}
+            style={{ marginTop:window.innerHeight - window.innerHeight*0.9}}
         >
             <Card style={{width: window.innerWidth - window.innerWidth*0.2}} className="p-5 card">
                     <h2 className="align-self-center"> Авторы</h2>

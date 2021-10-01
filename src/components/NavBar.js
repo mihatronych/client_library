@@ -50,7 +50,7 @@ const NavBar = observer(() => {
 
     return (
         <div>
-        <Navbar className="my-3 nav_bar">
+        <Navbar className="mb-3 nav_bar">
             <Container className="d-flex">
                 <NavLink to={MAIN_ROUTE}><div className="ico"/></NavLink>
                 <ArchiveMenu className='col-sm-1'/>
