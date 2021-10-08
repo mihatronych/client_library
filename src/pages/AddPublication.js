@@ -78,7 +78,7 @@ const AddPublication = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center mt-4"
-            style={{height:window.innerHeight - 54}}
+            style={{}}
         >
             <Card style={{width: 600}} className="p-5 mt-4 card">
                 <h2 className="m-auto">Новая публикация</h2>
@@ -90,7 +90,7 @@ const AddPublication = observer(() => {
                         onChange={e => setTitle(e.target.value)}
                     />
                     <Row>
-                    <Form.Group className="ml-3 mr-2">
+                    <Form.Group className="ml-3 mr-4">
                         <Form.Label>Выберите автора</Form.Label>
                         <Form.Control as="select"
                                       value={author_id}
@@ -102,7 +102,7 @@ const AddPublication = observer(() => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="ml-2 mr-2">
+                    <Form.Group className="ml-3 mr-4">
                         <Form.Label>Выберите тему</Form.Label>
                         <Form.Control as="select"
                                       value={themeId}
@@ -113,7 +113,7 @@ const AddPublication = observer(() => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="ml-2">
+                    <Form.Group className="ml-3">
                         <Form.Label>Выберите тип</Form.Label>
                         <Form.Control as="select"
                                       value={typeId}
@@ -139,7 +139,7 @@ const AddPublication = observer(() => {
                                onChange={e => setPages(e.target.value)}/>
                     </Form.Group>
                     <Row>
-                    <Form.Group className="ml-3 mr-2">
+                    <Form.Group className="ml-3 mr-4">
                         <Form.Label>Выберите издательство</Form.Label>
                         <Form.Control as="select"
                                       value={publicatorId}
@@ -150,7 +150,7 @@ const AddPublication = observer(() => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="ml-2 mr-2">
+                    <Form.Group className="ml-3 mr-4">
                         <Form.Label>Выберите язык</Form.Label>
                         <Form.Control as="select"
                                       value={dialectId}
@@ -161,7 +161,7 @@ const AddPublication = observer(() => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="ml-2">
+                    <Form.Group className="ml-3">
                         <Form.Label>Выберите регион</Form.Label>
                         <Form.Control as="select"
                             value={regionId}

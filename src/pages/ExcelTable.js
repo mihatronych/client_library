@@ -87,7 +87,7 @@ class BasicSheet extends React.Component {
                 { label: 'Регион', width: '5%' },
                 { label: 'Издатель', width: '5%' },
                 { label: 'Тип', width: '5%' },
-                { label: 'Издатель', width: '5%' }
+                { label: 'Средн. рейтинг', width: '5%' }
             ],
             grid: props.table,
         };
@@ -271,7 +271,7 @@ const ExcelTable = observer(() => {
         >
             <Card style={{width: window.innerWidth - 100}} className="p-5 card">
 
-                    <CSVLink className="btn_special" style={{width:'240px', margin:'5px', }} class="dropdown-item" data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
+                    <CSVLink className="btn" style={{width:'240px', margin:'5px', }} data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
 
         <BasicSheet table={createExcelTable(excelData)} style={{fontSize: 12}}/>
                 </Card>

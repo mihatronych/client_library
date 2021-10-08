@@ -21,7 +21,7 @@ const Regions = observer(() => {
 
     const getFilteredBooks = async(regionId) => {
         superFilter.setFilter(publication.regions.find(a => a.id === regionId))
-        superFilter.setFiltered(publication.publications.filter((data) => {if (data.authorId === parseInt(regionId)) return data
+        superFilter.setFiltered(publication.publications.filter((data) => {if (data.regionId === parseInt(regionId)) return data
         return null}))
         return history.push(PUBLICATION_ROUTE)
     }

@@ -39,7 +39,7 @@ const AddMark = observer(() => {
             style={{height:window.innerHeight - 54}}
         >
             <Card style={{width: 600}} className="p-5 mt-4 card">
-                <h2 className="m-auto">Новая публикация</h2>
+                <h2 className="m-auto">Новый отзыв</h2>
                 <Form className="d-flex flex-column">
                     <Form.Group>
                         <Form.Label>Впишите отзыв</Form.Label>

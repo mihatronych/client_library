@@ -175,7 +175,7 @@ const SortablePublications = (props) => {
                         <Row>
                 <DropdownButton title="Сортировать" className="ml-2" variant={"outline-light"} style={{zIndex:100} }>
                     <DropdownItem onClick={() => requestSort('title')}
-                                  className={getClassNamesFor('title')}>
+                                  className={getClassNamesFor('title')} style={{minWidth:"250px"}}>
                         По названию
                     </DropdownItem>
                     <DropdownItem onClick={() => requestSort('pages')}
@@ -188,7 +188,7 @@ const SortablePublications = (props) => {
                     </DropdownItem>
                 </DropdownButton>
                     <DropdownButton title="Фильтровать" className="ml-2" variant={"outline-light"} style={{zIndex:100} }>
-                        <DropdownItem onClick={() => requestFilter('1')}>
+                        <DropdownItem onClick={() => requestFilter('1')} style={{minWidth:"250px"}}>
                             до 100-ти стр.
                         </DropdownItem>
                         <DropdownItem onClick={() => requestFilter('2')}>

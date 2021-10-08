@@ -100,8 +100,8 @@ const AdditionalMenu = () => {
     return (
         <Nav className="ml-auto">
             <DropdownButton title="Дополнительно" style={{zIndex:100}}>
-                <DropdownItem onClick={() => toGraphs()}>
-                    Региональная статистика
+                <DropdownItem onClick={() => toGraphs()} style={{minWidth:"250px"}}>
+                    Статистика
                 </DropdownItem>
                 <DropdownItem onClick={() => toExcel()}>
                     Эксель таблица

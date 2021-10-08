@@ -6,7 +6,7 @@ const ArchiveMenu = () => {
     return (
         <Nav className="ml-auto" style={{color: 'white'}}>
         <DropdownButton title="Архив" className="ml-2" variant={"outline-light"} style={{zIndex:100}}>
-            <DropdownItem href={"/authors"}>
+            <DropdownItem href={"/authors"} style={{minWidth:"250px"}}>
                 Авторы
             </DropdownItem>
             <DropdownItem href={"/publication"}>
