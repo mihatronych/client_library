@@ -74,7 +74,7 @@ const UpdatePublication = observer(() => {
             style={{}}
         >
             <Card style={{width: 600}} className="p-5 mt-4 card">
-                <h2 className="m-auto">Изменить публикацию {publicn.title}</h2>
+                <h2 className="m-auto">Редактировать публикацию {publicn.title}</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-3"

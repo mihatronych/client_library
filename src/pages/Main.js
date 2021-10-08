@@ -89,7 +89,7 @@ const Main = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{height:window.innerHeight - window.innerHeight*0.2}}
+            style={{}}
         >
             {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
             <Card style={{width: window.innerWidth - 100}} className="p-5 card">

@@ -27,7 +27,7 @@ function Footer() {
             <div style={phantom} />
             <div style={style} >
                 <div className="d-flex justify-content-center container">
-                    <p className="small-text"> &copy; {new Date().getFullYear()} | Mihatron | <a href={"mailto:dolgushin.mikhail131200@yandex.ru"}>dolgushin.mikhail131200@yandex.ru </a>| <a  target="_blank" rel="noreferrer" href={"https://github.com/mihatronych"}>Git</a> | <a href={"https://t.me/MihailmacBlack"} target="_blank" rel="noreferrer">Telegram</a> | <a href={"https://vk.com/mdliberateanimals"}  target="_blank" rel="noreferrer">Вк</a></p>
+                    <p className="small-text"> &copy; {new Date().getFullYear()} | Mihatron | <a href={"mailto:dolgushin.mikhail131200@yandex.ru"}>dolgushin.mikhail131200@yandex.ru </a>| <a  target="_blank" rel="noreferrer" href={"https://github.com/mihatronych"}>Git</a> | <a href={"https://t.me/MihailmacBlack"} target="_blank" rel="noreferrer">Telegram</a> | <a href={"https://vk.com/mdliberateanimals"}  target="_blank" rel="noreferrer">Вк</a> | <a href={"https://docs.google.com/document/d/1-YxW-SYXvgViy_rcDC-JsEQYOnLW3xJB/edit?rtpof=true&sd=true"}  target="_blank" rel="noreferrer">Info</a></p>
 
                 </div>
 

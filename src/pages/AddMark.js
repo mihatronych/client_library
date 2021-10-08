@@ -36,7 +36,7 @@ const AddMark = observer(() => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center mt-4"
-            style={{height:window.innerHeight - 54}}
+            style={{}}
         >
             <Card style={{width: 600}} className="p-5 mt-4 card">
                 <h2 className="m-auto">Новый отзыв</h2>
