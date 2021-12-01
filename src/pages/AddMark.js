@@ -20,9 +20,11 @@ const AddMark = observer(() => {
     let decodedData = jwt_decode(storedToken);
     const Create = () => {
         if(rate === undefined || "")
-            return alert("Невведено название")
+            return alert("Невведена оценка")
+        if(rate > 10 || rate < 1)
+            return alert("Введена некорректная оценка, вы можете поставить от 1 до 10")
         if(content === undefined || "")
-            return alert("Невведено краткое описание")
+            return alert("Невведен отзыв")
         try {
             createMark({rate:rate, content:content, authorId:decodedData.id, publicationId:publicationId}).then()
             alert("Данные добавлены");
@@ -44,6 +46,7 @@ const AddMark = observer(() => {
                     <Form.Group>
                         <Form.Label>Впишите отзыв</Form.Label>
                         <Form.Control as="textarea"
+                                      id="mark_review"
                                       value={content}
                                       onChange={e => setContent(e.target.value)}>
                         </Form.Control>
@@ -51,11 +54,13 @@ const AddMark = observer(() => {
                     <Form.Group>
                         <Form.Label>Введите оценку</Form.Label>
                         <input type="number" className="form-control" min='1' max='10'
+                               id="mark_rate"
                                value={rate}
                                onChange={e => setRate(parseInt(e.target.value))}/>
                     </Form.Group>
 
                     <Button
+                        id="mark_create_button"
                         className="d-flex mt-3 justify-content-center"
                         onClick={Create}
                     >

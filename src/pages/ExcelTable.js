@@ -271,7 +271,7 @@ const ExcelTable = observer(() => {
         >
             <Card style={{width: window.innerWidth - 100}} className="p-5 card">
 
-                    <CSVLink className="btn" style={{width:'240px', margin:'5px', }} data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
+                    <CSVLink className="btn" id={"excel_table_download"} style={{width:'240px', margin:'5px', }} data={createCsvTable(csvData)}>Экспорт таблицы EXCEL</CSVLink>
 
         <BasicSheet table={createExcelTable(excelData)} style={{fontSize: 12}}/>
                 </Card>

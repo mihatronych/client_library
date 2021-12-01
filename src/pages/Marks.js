@@ -162,7 +162,7 @@ const Marks = observer(() => {
                                 <Bar dataKey="count"fill="#FF872B" />
                             </BarChart>
                         <Col>{user.isAuth ? <Col>
-                                <Button href={"/add_mark/"+publicn.id} variant={"outline-light"}>Добавить отзыв</Button>
+                                <Button href={"/add_mark/"+publicn.id} id={"marks_add_new"} variant={"outline-light"}>Добавить отзыв</Button>
                             </Col>
                             :
                             <Col>

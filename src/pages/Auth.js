@@ -68,6 +68,7 @@ const Auth = observer(() => {
                     {!isLogin ? <Form.Control
                         className="mt-3"
                         placeholder="Введите ваше имя/псевдоним..."
+                        id='name_place'
                         value={name}
                         required
                         onChange={e => setName(e.target.value)}
@@ -75,6 +76,7 @@ const Auth = observer(() => {
                     <Form.Control
                         className="mt-3"
                         placeholder="Введите ваш email..."
+                        id='email_place'
                         type="Email"
                         pattern='/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i'
                         value={email}
@@ -85,12 +87,14 @@ const Auth = observer(() => {
                         className="mt-3"
                         placeholder="Введите ваш пароль..."
                         value={password}
+                        id='password_place'
                         required
                         onChange={e => setPassword(e.target.value)}
                         type="password"
                     />
                     <Button
                         onClick={click}
+                        id='log_in'
                         className="d-flex my-3 justify-content-center btn_special"
                     >
                         {!isLogin ? "Зарегистрироваться": "Войти"}

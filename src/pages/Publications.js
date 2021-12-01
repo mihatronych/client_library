@@ -29,8 +29,8 @@ const Publications = observer(() => {
         >
             {useEffect(() => {fetchPublication().then(data => publication.setPublications(data))})}
             {superFilter.filtered === undefined ?
-            <SortablePublications publications={publication.publications} authors={publication.authors} types={publication.types} marks = {mark}/>
-                : <SortablePublications publications={superFilter.filtered} authors={publication.authors} types={publication.types} marks = {mark}/>}
+            <SortablePublications publications={publication.publications} id="publications_default" authors={publication.authors} types={publication.types} marks = {mark}/>
+                : <SortablePublications publications={superFilter.filtered} id="publications_filtered" authors={publication.authors} types={publication.types} marks = {mark}/>}
         </Container>
     );
 });

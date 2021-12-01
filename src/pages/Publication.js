@@ -149,9 +149,9 @@ const Publication = observer(() => {
                 </div>
             </Col>
         </Row>
-        <a href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank" rel="noreferrer"
+        <a id={"publication_read_"+publictn.id} href={process.env.REACT_APP_API_URL + publictn.publication.file} target="_blank" rel="noreferrer"
            className="d-flex justify-content-center" style={{color:"white"}} download>Открыть для чтения</a>
-        <a href={MARKS_ROUTE + '/'+ publictn.publication.id} style={{color:"white"}} className="d-flex justify-content-center">Отзывы</a>
+        <a id={"publication_marks_"+publictn.id} href={MARKS_ROUTE + '/'+ publictn.publication.id} style={{color:"white"}} className="d-flex justify-content-center">Отзывы</a>
             </div>
     }
 

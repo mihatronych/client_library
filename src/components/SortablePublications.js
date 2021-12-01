@@ -152,7 +152,7 @@ const SortablePublications = (props) => {
                     <Col className="m-auto">Издание: {new Date(item.date_publ.toString()).toLocaleDateString()} </Col>
                     <Col className="m-auto">{item.pages} стр.</Col>
                     <Col className="m-auto">{meanMark(item.id)}</Col>
-                    <Col className="m-auto"><Button href={"/publication/" + item.id}
+                    <Col className="m-auto"><Button id={"publications_open_item_"+item.id} href={"/publication/" + item.id}
                                                     variant={"outline-light"}>Открыть</Button></Col>
                 </Row>
             </div>
@@ -227,7 +227,7 @@ const SortablePublications = (props) => {
                         activeClassName={"paginationActive"}/>
                         </Col>
                         {user.isAuth ? <Col>
-                                <Button href={"/add_publication/"} variant={"outline-light"}>Добавить публикацию</Button>
+                                <Button href={"/add_publication/"} id={"publications_add_new"} variant={"outline-light"}>Добавить публикацию</Button>
                             </Col>
                             :
                             <Col>

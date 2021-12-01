@@ -26,9 +26,9 @@ const LanguageMenu = observer(() => {
 
     return (
         <Nav className="ml-auto" style={{color: 'white'}}>
-            <DropdownButton title="Язык" className="ml-2" variant={"outline-light"} style={{zIndex:100}}>
+            <DropdownButton id={"language_menu_dialect"} title="Язык" className="ml-2" variant={"outline-light"} style={{zIndex:100}}>
                 {language.dialects.map(dialect =>
-                    <DropdownItem onClick={() => getFilteredBooks(dialect.id)}>
+                    <DropdownItem id={"language_menu_dialect_"+dialect.id} onClick={() => getFilteredBooks(dialect.id)}>
                         {dialect.name} : {language.languages.map(language =>
                     {if (language.id === dialect.languageId) return <i>{language.name}</i>
                         return null}

@@ -49,7 +49,7 @@ const Main = observer(() => {
     const displayPublications = sortedPublictions
         .slice(pagesVisited, pagesVisited + publicationsPerPage)
         .map(publicat =>
-             <Link to={"/publication/"+publicat.id} style={{ textDecoration: 'none' }}>
+             <Link to={"/publication/"+publicat.id} style={{ textDecoration: 'none' }} id={"main_publication_"+publicat.id}>
                 <div className="d-flex justify-content-between container mt-3 block_in_card">
                     <Row>
                         <Col>

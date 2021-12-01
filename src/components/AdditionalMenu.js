@@ -99,11 +99,11 @@ const AdditionalMenu = () => {
 
     return (
         <Nav className="ml-auto">
-            <DropdownButton title="Дополнительно" style={{zIndex:100}}>
-                <DropdownItem onClick={() => toGraphs()} style={{minWidth:"250px"}}>
+            <DropdownButton id={"additional_menu_dpb"} title="Дополнительно" style={{zIndex:100}}>
+                <DropdownItem id={"additional_menu_stonks"} onClick={() => toGraphs()} style={{minWidth:"250px"}}>
                     Статистика
                 </DropdownItem>
-                <DropdownItem onClick={() => toExcel()}>
+                <DropdownItem id={"additional_menu_excel"} onClick={() => toExcel()}>
                     Эксель таблица
                 </DropdownItem>
             </DropdownButton>

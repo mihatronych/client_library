@@ -53,9 +53,9 @@ const NavBar = observer(() => {
         <Navbar className="mb-3 nav_bar">
             <Container className="d-flex">
                 <NavLink to={MAIN_ROUTE}><div className="ico"/></NavLink>
-                <ArchiveMenu className='col-sm-1'/>
-                <LanguageMenu className='col-sm-2'/>
-                <AdditionalMenu/>
+                <ArchiveMenu id={"archive_menu"} className='col-sm-1'/>
+                <LanguageMenu id={"language_menu"} className='col-sm-2'/>
+                <AdditionalMenu id={"additional_menu"}/>
                 <div className="dropdown">
                     <div className="dropbtn">
                     <Search
@@ -72,10 +72,10 @@ const NavBar = observer(() => {
             {user.isAuth ?
                 <Nav className="ml-auto">
                     <Grid  className="mx-3 mt-2"> Пользователь: {user.user.name} </Grid>
-                    <Button className="btn_special" onClick={() => logOut()}>Выйти</Button>
+                    <Button className="btn_special" id="log_out" onClick={() => logOut()}>Выйти</Button>
                 </Nav> :
                 <Nav className="ml-auto">
-                    <Button className="btn_special" onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
+                    <Button className="btn_special" id="authorize" onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
                 </Nav>
             }
             </Container>
